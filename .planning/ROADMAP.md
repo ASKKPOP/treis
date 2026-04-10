@@ -47,7 +47,7 @@ Every phase follows the Treis Development Pipeline — no exceptions:
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Monorepo, model adapters, tool system, and session persistence — everything the engine depends on
+- [x] **Phase 1: Foundation** - Monorepo, model adapters, tool system, and session persistence — everything the engine depends on
 - [ ] **Phase 2: Engine** - Plan Contract engine and Agent loop — the core intelligence that makes plans complete
 - [ ] **Phase 3: CLI** - Terminal interface and benchmark suite — proves the engine works end-to-end
 - [ ] **Phase 4: Desktop** - Electron app wraps the proven engine with a visual Plan Contract flow
@@ -117,7 +117,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/5 | Planning complete | - |
+| 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
 | 2. Engine | 0/TBD | Not started | - |
 | 3. CLI | 0/TBD | Not started | - |
 | 4. Desktop | 0/TBD | Not started | - |
