@@ -122,9 +122,9 @@ Plans:
 **UI hint**: yes
 
 Plans:
-- [ ] 04-01-PLAN.md — Electron + electron-vite scaffold, IPC bridge (7 channels), worker thread agent runner
-- [ ] 04-02-PLAN.md — IntentInput, Dialogue, and PlanOptions screens (contract negotiation UI)
-- [ ] 04-03-PLAN.md — SealedContract, ExecutionStream, Result screens and ViolationModal (execution UI)
+- [x] 04-01-PLAN.md — Electron + electron-vite scaffold, IPC bridge (7 channels), worker thread agent runner
+- [x] 04-02-PLAN.md — IntentInput, Dialogue, and PlanOptions screens (contract negotiation UI)
+- [x] 04-03-PLAN.md — SealedContract, ExecutionStream, Result screens and ViolationModal (execution UI)
 - [ ] 04-04-PLAN.md — DMG packaging via electron-builder and demo GIF capture
 
 ## Progress
