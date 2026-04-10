@@ -1,9 +1,15 @@
 import { createCliInterface } from '../input.js'
 import { runDialogue } from '../ui/dialogue.js'
 import { displayOptions, selectOption } from '../ui/options.js'
-import { createPlanContractEngine, bootstrapWorkspace } from '@treis/core'
+import { buildConsumer } from '../consumer.js'
+import { buildViolationHandler, buildEscalationHandler } from '../ui/violation.js'
+import { renderSealedContract } from '../ui/execution.js'
+import { renderResultScreen } from '../ui/result.js'
+import { createPlanContractEngine, bootstrapWorkspace, runAgent } from '@treis/core'
 import type { PlanContract } from '@treis/core'
 import { createSlotManager } from '@treis/api-client'
+import { FileReadTool, GlobTool, GrepTool, FileWriteTool, BashTool, PermissionTier } from '@treis/tools'
+import type { ToolContext } from '@treis/tools'
 import { ulid } from 'ulid'
 
 export async function runCommand(task: string): Promise<void> {
@@ -47,10 +53,45 @@ export async function runCommand(task: string): Promise<void> {
 
     // Phase C: Seal contract
     const contract: PlanContract = await engine.seal(task, clarifications, selected)
-    process.stdout.write(`\nContract sealed: ${contract.id}\n`)
-    process.stdout.write(`Saved to: ${workspace.planContractsDir}/${contract.id}.json\n`)
 
-    // TODO: Plan 02 adds execution stream (runAgent) + result screen here
+    // Display sealed contract before execution
+    renderSealedContract(contract)
+
+    // 4. Prepare tools and context
+    const tools = [
+      new FileReadTool(),
+      new GlobTool(),
+      new GrepTool(),
+      new FileWriteTool(),
+      new BashTool(),
+    ]
+    const toolContext: ToolContext = {
+      workspaceRoot: process.cwd(),
+      sessionId: workspaceId,
+      permissionGrants: new Set([
+        PermissionTier.ReadOnly,
+        PermissionTier.WriteFiles,
+        PermissionTier.ExecuteShell,
+      ]),
+    }
+
+    // 5. Run agent execution with streaming
+    const { consumer, state } = buildConsumer()
+
+    await runAgent({
+      contract,
+      tools,
+      model,
+      consumer,
+      handleViolation: buildViolationHandler(rl),
+      approveEscalation: buildEscalationHandler(rl),
+      workspace,
+      sessionId: workspaceId,
+      toolContext,
+    })
+
+    // 6. Result screen
+    renderResultScreen(contract, state.totalSteps)
 
   } finally {
     rl.close()
