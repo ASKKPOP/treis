@@ -17,6 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@treis/core": "workspace:*",
     "ai": "^5",
     "@ai-sdk/anthropic": "latest",
     "@ai-sdk/openai": "latest",
