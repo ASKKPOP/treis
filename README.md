@@ -1,123 +1,114 @@
 # Treis
 
-An open-source AI-powered work execution platform that makes multi-step AI plans actually complete end-to-end.
+<p align="center">
+<a href="https://github.com/ASKKPOP/treis">ASKKPOP/treis</a>
+·
+<a href="./PARITY.md">Parity</a>
+·
+<a href="./PHILOSOPHY.md">Philosophy</a>
+·
+<a href="./.planning/ROADMAP.md">Roadmap</a>
+·
+<a href="./.env.example">Config</a>
+</p>
 
-Treis introduces **Plan Contracts** — a scope-sealing mechanism where the AI proposes options, you pick one, and boundaries + success criteria are locked before any execution begins. The only interrupt is a genuine contract violation.
+<p align="center">
+<a href="https://star-history.com/#ASKKPOP/treis&Date">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date&theme=dark" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date" />
+<img alt="Star history for ASKKPOP/treis" src="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date" width="600" />
+</picture>
+</a>
+</p>
 
-> Currently macOS-first. Both Ollama (local) and Anthropic API (cloud) supported from day one.
+Treis is an open-source AI work execution platform built around **Plan Contracts** — scope-sealed agreements between the user and the AI that prevent silent scope creep and make multi-step plans actually complete.
 
----
+> [!IMPORTANT]
+> Set up your environment first: copy `.env.example` to `.env` and fill in your provider and API key. Run `pnpm --filter @treis/desktop dev` to launch the app. See [Config](./.env.example) for all supported providers.
 
 ## How it works
 
 ```
 You describe a task
        ↓
-AI asks clarifying questions
+AI asks 2–3 clarifying questions
        ↓
-AI proposes 3 contract options (scope + success criteria)
+AI proposes 3 contract options  (Fast / Balanced / Thorough)
        ↓
-You pick one → scope is sealed
+You pick one → scope is sealed, success criteria locked
        ↓
-Execution streams live (tool calls, tokens, verdicts)
+Agent executes — tool calls and tokens stream live
        ↓
 Result: pass/fail against the criteria you agreed to
 ```
 
-If the agent hits something outside the sealed scope, a **Violation Modal** surfaces — you decide: amend the contract or abort. No silent scope creep.
+If the agent needs to go outside the sealed scope, a **Violation Modal** surfaces. You decide: amend the contract, continue anyway, or stop. No silent scope creep.
 
----
+## Repository shape
 
-## Packages
-
-```
-treis/
-├── packages/
-│   ├── core/          # Agent loop, Plan Contract engine, state machine
-│   ├── api-client/    # Anthropic + Ollama providers (Vercel AI SDK 5)
-│   └── tools/         # Tool registry, built-in developer tools
-└── apps/
-    ├── cli/           # treis run — terminal execution stream
-    └── desktop/       # Electron app — full Plan Contract UI
-```
-
----
+- **`packages/core/`** — Plan Contract engine, agent loop, state machine, session persistence
+- **`packages/api-client/`** — Anthropic, OpenAI, Gemini, Mistral, Grok, Ollama adapters
+- **`packages/tools/`** — Tool registry, permission gating, FileRead/Write, Bash, Glob, Grep
+- **`packages/errors/`** — Typed error hierarchy
+- **`apps/cli/`** — `treis run` terminal interface
+- **`apps/desktop/`** — Electron app with full Plan Contract UI
+- **`PARITY.md`** — feature implementation status
+- **`PHILOSOPHY.md`** — why this project exists and how it is designed
+- **`.planning/ROADMAP.md`** — phase breakdown and active work
 
 ## Quick start
 
-**Prerequisites:** Node.js 22+, pnpm 10+
-
 ```bash
-git clone https://github.com/ASKKPOP/treis.git
+# 1. Clone and install
+git clone https://github.com/ASKKPOP/treis
 cd treis
 pnpm install
+
+# 2. Configure your AI provider
+cp .env.example .env
+# edit .env — set TREIS_MODEL_PROVIDER and your API key
+
+# 3. Launch the desktop app
+pnpm --filter @treis/desktop dev
+
+# 4. Or use the CLI
+pnpm --filter @treis/cli dev "build a todo app"
 ```
 
-**CLI**
+> [!NOTE]
+> **No API key?** Set `TREIS_MODEL_PROVIDER=ollama` and install [Ollama](https://ollama.com) locally. Run `ollama pull llama3.2` and no API key is needed.
 
-```bash
-# Set your API key (or use Ollama — no key needed)
-export ANTHROPIC_API_KEY=sk-...
+## Supported providers
 
-pnpm --filter @treis/cli run dev
-```
+| Provider | `TREIS_MODEL_PROVIDER` | Key env var |
+|----------|----------------------|-------------|
+| Ollama (local) | `ollama` | — |
+| Anthropic | `anthropic` | `ANTHROPIC_API_KEY` |
+| OpenAI | `openai` | `OPENAI_API_KEY` |
+| Google Gemini | `gemini` | `GOOGLE_GENERATIVE_AI_API_KEY` |
+| Mistral | `mistral` | `MISTRAL_API_KEY` |
+| Grok (xAI) | `grok` | `XAI_API_KEY` |
 
-**Desktop app**
+## Release schedule
 
-```bash
-pnpm --filter @treis/desktop run dev
-```
+| Version | Target | What ships |
+|---------|--------|-----------|
+| **v0.1** | May 2025 | Plan Contract flow end-to-end (Phases 1–4). Desktop + CLI. All 6 providers. |
+| **v0.2** | Jun 2025 | Settings UI, session resume, violation amendment persistence, WebFetch tool |
+| **v0.3** | Jul 2025 | Benchmark suite, performance dashboard, context window optimization |
+| **v0.4** | Aug 2025 | Plugin API — custom tools and providers without forking |
+| **v1.0** | Q4 2025 | Stable contract schema, signed macOS DMG, public plugin registry |
 
----
+Releases are cut from `main`. No release branches — `main` is always the current stable.
 
-## Tech stack
+## Documentation map
 
-| Layer | Technology |
-|-------|-----------|
-| Language | TypeScript 5.8 |
-| Runtime | Node.js 22 LTS |
-| AI abstraction | Vercel AI SDK 5 + `@ai-sdk/anthropic` |
-| Local models | Ollama (OpenAI-compatible endpoint) |
-| Schema | Zod 4 |
-| CLI | commander.js 12 |
-| Desktop | Electron 35 + electron-vite 5 + React 19 |
-| UI | Tailwind 4 |
-| Logging | pino 9 (JSONL traces) |
-| Testing | Vitest 3 (unit) + Playwright (E2E) |
-| Packaging | electron-builder 26 (universal macOS binary) |
+- [`.env.example`](./.env.example) — all environment variables with descriptions
+- [`PARITY.md`](./PARITY.md) — what is and isn't implemented
+- [`PHILOSOPHY.md`](./PHILOSOPHY.md) — design intent and constraints
+- [`.planning/ROADMAP.md`](./.planning/ROADMAP.md) — phase-level roadmap
 
----
+## Ownership disclaimer
 
-## Development
-
-```bash
-# Build all packages
-pnpm build
-
-# Run tests
-pnpm test
-
-# Type check
-pnpm typecheck
-
-# Lint
-pnpm lint
-```
-
----
-
-## Roadmap
-
-| Phase | Status | Description |
-|-------|--------|-------------|
-| 0 — Foundation | Done | Monorepo setup, core packages, config |
-| 1 — Core | Done | Agent loop, Plan Contract engine, tool system |
-| 2 — Providers | Done | API client, Anthropic + Ollama integration |
-| 3 — CLI | Done | `treis run`, execution stream, result screen |
-| 4 — Desktop | In progress | Electron app, full Plan Contract UI |
-
----
-
-## License
-
-MIT — see [LICENSE](./LICENSE)
+This repository is not affiliated with, endorsed by, or maintained by Anthropic, OpenAI, Google, Mistral, or xAI.
