@@ -19,12 +19,15 @@
   "dependencies": {
     "@treis/api-client": "workspace:*",
     "@treis/tools": "workspace:*",
+    "micromatch": "^4.0.8",
     "pino": "^9",
+    "ulid": "^3.0.2",
     "zod": "^4"
   },
   "devDependencies": {
-    "typescript": "^5.8",
+    "@types/micromatch": "^4.0.10",
     "tsup": "^8",
+    "typescript": "^5.8",
     "vitest": "^3"
   }
 }
