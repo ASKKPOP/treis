@@ -2,15 +2,38 @@
   "name": "@treis/desktop",
   "version": "0.0.1",
   "private": true,
+  "main": "./out/main/index.js",
   "scripts": {
-    "build": "echo 'Desktop scaffold: Electron setup deferred to Phase 4'",
-    "test": "vitest run"
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "build:mac": "pnpm build && electron-builder --mac --universal",
+    "preview": "electron-vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@treis/core": "workspace:*"
+    "@treis/core": "workspace:*",
+    "@treis/api-client": "workspace:*",
+    "@treis/tools": "workspace:*",
+    "react": "^19",
+    "react-dom": "^19",
+    "@headlessui/react": "^2.2",
+    "lucide-react": "^0.500",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "typescript": "^5.8",
-    "vitest": "^3"
+    "vitest": "^3",
+    "electron": "^41",
+    "electron-vite": "^5",
+    "electron-builder": "^26",
+    "@vitejs/plugin-react": "^4",
+    "tailwindcss": "^4",
+    "@tailwindcss/vite": "^4",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@testing-library/react": "^16",
+    "@testing-library/jest-dom": "^6",
+    "jsdom": "^26"
   }
 }

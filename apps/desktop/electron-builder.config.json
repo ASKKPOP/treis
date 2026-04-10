@@ -1,0 +1,16 @@
+{
+  "appId": "io.treis.desktop",
+  "productName": "Treis",
+  "directories": { "buildResources": "build", "output": "release" },
+  "files": ["out/**/*", "node_modules/**/*", "!node_modules/**/test/**", "!node_modules/**/*.map"],
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "hardenedRuntime": false,
+    "target": [{ "target": "dmg", "arch": ["universal"] }],
+    "icon": "build/icon.icns"
+  },
+  "dmg": {
+    "title": "Treis ${version}",
+    "artifactName": "Treis-${version}-macOS.dmg"
+  }
+}
