@@ -44,6 +44,9 @@ importers:
       commander:
         specifier: ^14
         version: 14.0.3
+      dotenv:
+        specifier: ^17.4.1
+        version: 17.4.1
       ulid:
         specifier: ^3.0.2
         version: 3.0.2
@@ -72,6 +75,9 @@ importers:
       '@treis/tools':
         specifier: workspace:*
         version: link:../../packages/tools
+      dotenv:
+        specifier: ^17.4.1
+        version: 17.4.1
       lucide-react:
         specifier: ^0.500
         version: 0.500.0(react@19.2.5)
@@ -1815,6 +1821,10 @@ packages:
 
   dotenv@16.6.1:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+    engines: {node: '>=12'}
+
+  dotenv@17.4.1:
+    resolution: {integrity: sha512-k8DaKGP6r1G30Lx8V4+pCsLzKr8vLmV2paqEj1Y55GdAgJuIqpRp5FfajGF8KtwMxCz9qJc6wUIJnm053d/WCw==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -5071,6 +5081,8 @@ snapshots:
       dotenv: 16.6.1
 
   dotenv@16.6.1: {}
+
+  dotenv@17.4.1: {}
 
   dunder-proto@1.0.1:
     dependencies:

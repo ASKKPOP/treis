@@ -11,15 +11,16 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@treis/api-client": "workspace:*",
     "@treis/core": "workspace:*",
     "@treis/tools": "workspace:*",
-    "@treis/api-client": "workspace:*",
     "commander": "^14",
+    "dotenv": "^17.4.1",
     "ulid": "^3.0.2"
   },
   "devDependencies": {
-    "typescript": "^5.8",
     "tsup": "^8",
+    "typescript": "^5.8",
     "vitest": "^3"
   }
 }

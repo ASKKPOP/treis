@@ -1,6 +1,13 @@
 import { app, BrowserWindow, shell } from 'electron'
 import { join } from 'node:path'
+import { config as loadEnv } from 'dotenv'
 import { registerIpcHandlers } from './ipc-handlers.js'
+
+// Load .env from repo root so all subprojects share one config file.
+// Works in both dev (process.cwd() = apps/desktop) and packaged app
+// (resolve up from __dirname which is apps/desktop/out/main/).
+loadEnv({ path: join(__dirname, '../../../../.env'), override: false })
+loadEnv({ path: join(process.cwd(), '../../.env'), override: false })
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
