@@ -1,0 +1,21 @@
+{
+  "name": "@treis/cli",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "treis": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@treis/core": "workspace:*",
+    "commander": "^14"
+  },
+  "devDependencies": {
+    "typescript": "^5.8",
+    "tsup": "^8",
+    "vitest": "^3"
+  }
+}

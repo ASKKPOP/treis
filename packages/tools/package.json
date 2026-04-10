@@ -1,0 +1,29 @@
+{
+  "name": "@treis/tools",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "^4",
+    "fast-glob": "latest"
+  },
+  "devDependencies": {
+    "pino": "^9",
+    "typescript": "^5.8",
+    "tsup": "^8",
+    "vitest": "^3"
+  }
+}
