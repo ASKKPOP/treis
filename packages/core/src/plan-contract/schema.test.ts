@@ -155,11 +155,11 @@ describe('PlanOptionsResponseSchema', () => {
     expect(result.success).toBe(true)
   })
 
-  it('rejects fewer than 3 options', () => {
+  it('accepts fewer than 3 options (constraint enforced in engine, not schema)', () => {
     const result = PlanOptionsResponseSchema.safeParse({
       options: [makeOption('A', 'Fast'), makeOption('B', 'Balanced')],
     })
-    expect(result.success).toBe(false)
+    expect(result.success).toBe(true)
   })
 })
 
@@ -172,19 +172,19 @@ describe('ClarifyResponseSchema', () => {
     expect(result.success).toBe(true)
   })
 
-  it('rejects empty questions array (min 2)', () => {
+  it('accepts empty questions array (min enforced in engine, not schema)', () => {
     const result = ClarifyResponseSchema.safeParse({ questions: [] })
-    expect(result.success).toBe(false)
+    expect(result.success).toBe(true)
   })
 
-  it('accepts 3 questions (max)', () => {
+  it('accepts 3 questions', () => {
     const result = ClarifyResponseSchema.safeParse({ questions: ['Q1', 'Q2', 'Q3'] })
     expect(result.success).toBe(true)
   })
 
-  it('rejects 4 questions (exceeds max)', () => {
+  it('accepts 4 questions (max enforced in engine, not schema)', () => {
     const result = ClarifyResponseSchema.safeParse({ questions: ['Q1', 'Q2', 'Q3', 'Q4'] })
-    expect(result.success).toBe(false)
+    expect(result.success).toBe(true)
   })
 })
 

@@ -99,6 +99,14 @@ describe('PlanContractEngine.clarify()', () => {
     expect(userMessage?.content).toContain(intent)
   })
 
+  it('Test 4b: throws when model returns fewer than 2 questions', async () => {
+    const mockGenerateObject = vi.mocked(generateObject)
+    mockGenerateObject.mockResolvedValueOnce({ object: { questions: ['Q1'] } } as never)
+
+    const engine = createPlanContractEngine({ model: mockModel, workspace: { planContractsDir: tmpDir } })
+    await expect(engine.clarify('Build something')).rejects.toThrow('at least 2 clarifying questions')
+  })
+
   it('Test 12: works when model returns exactly 2 questions (minimum)', async () => {
     const mockGenerateObject = vi.mocked(generateObject)
     mockGenerateObject.mockResolvedValueOnce({ object: { questions: ['Q1', 'Q2'] } } as never)
@@ -159,6 +167,16 @@ describe('PlanContractEngine.propose()', () => {
     expect(clarificationMsg?.content).toContain('Which auth method?')
     expect(clarificationMsg?.content).toContain('Mobile support needed?')
     expect(clarificationMsg?.content).toContain('Yes')
+  })
+
+  it('Test 5b: throws when model returns != 3 options', async () => {
+    const mockGenerateObject = vi.mocked(generateObject)
+    mockGenerateObject.mockResolvedValueOnce({
+      object: { options: [makeOption('A', 'Fast'), makeOption('B', 'Balanced')] },
+    } as never)
+
+    const engine = createPlanContractEngine({ model: mockModel, workspace: { planContractsDir: tmpDir } })
+    await expect(engine.propose('Build something', [])).rejects.toThrow('exactly 3 plan options')
   })
 
   it('Test 6: options have labels A, B, C with Fast/Balanced/Thorough archetypes', async () => {

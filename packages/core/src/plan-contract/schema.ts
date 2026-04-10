@@ -41,7 +41,7 @@ export type PlanContract = z.infer<typeof PlanContractSchema>
 // The model returns 2–3 clarifying questions before generating options
 // ---------------------------------------------------------------------------
 export const ClarifyResponseSchema = z.object({
-  questions: z.array(z.string()).min(2).max(3),
+  questions: z.array(z.string()),
 })
 export type ClarifyResponse = z.infer<typeof ClarifyResponseSchema>
 
@@ -62,7 +62,7 @@ export const PlanOptionSchema = z.object({
 export type PlanOption = z.infer<typeof PlanOptionSchema>
 
 export const PlanOptionsResponseSchema = z.object({
-  options: z.array(PlanOptionSchema).length(3),
+  options: z.array(PlanOptionSchema),
 })
 export type PlanOptionsResponse = z.infer<typeof PlanOptionsResponseSchema>
 

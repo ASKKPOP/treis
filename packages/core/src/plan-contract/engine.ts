@@ -72,7 +72,7 @@ Each option must include:
 // The strict schema (max:3) is enforced AFTER we truncate to 3 questions (D-07)
 // ---------------------------------------------------------------------------
 const ClarifyResponseSchemaInternal = z.object({
-  questions: z.array(z.string()).min(2),
+  questions: z.array(z.string()),
 })
 
 // ---------------------------------------------------------------------------
@@ -94,10 +94,12 @@ export function createPlanContractEngine(
         messages: [{ role: 'user', content: intent }],
       })
 
-      // Truncate to max 3 questions per D-07
-      const questions = object.questions.length > 3
-        ? object.questions.slice(0, 3)
-        : object.questions
+      // Enforce 2–3 questions in application code (Anthropic rejects minItems>1 in schema)
+      const raw = object.questions.filter((q: string) => q.trim().length > 0)
+      if (raw.length < 2) {
+        throw new Error(`Expected at least 2 clarifying questions, got ${raw.length}`)
+      }
+      const questions = raw.slice(0, 3)
 
       return { questions }
     },
@@ -122,6 +124,11 @@ export function createPlanContractEngine(
           },
         ],
       })
+
+      // Enforce exactly 3 options in application code (Anthropic rejects minItems>1 in schema)
+      if (object.options.length !== 3) {
+        throw new Error(`Expected exactly 3 plan options, got ${object.options.length}`)
+      }
       return object
     },
 

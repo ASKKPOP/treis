@@ -25,6 +25,7 @@
     "ulid": "^2.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/vite": "^4",
     "@testing-library/jest-dom": "^6",
     "@testing-library/react": "^16",
@@ -35,6 +36,7 @@
     "electron-builder": "^26",
     "electron-vite": "^5",
     "jsdom": "^26",
+    "playwright": "^1.59.1",
     "tailwindcss": "^4",
     "typescript": "^5.8",
     "vitest": "^3"
