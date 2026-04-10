@@ -148,16 +148,13 @@ export const BashTool: Tool<BashInput, BashOutput> = {
             })
             return
           }
+          // exec error.code is a string like 'ENOENT', not an exit code number.
+          // Use error presence as proxy: non-zero exit if exec reported an error.
+          const exitCode = error ? (error as NodeJS.ErrnoException & { status?: number }).status ?? 1 : 0
           resolve({
             stdout: stdout.toString(),
             stderr: stderr.toString(),
-            exitCode: (error as NodeJS.ErrnoException)?.code !== undefined
-              ? (typeof (error as NodeJS.ErrnoException).code === 'number'
-                ? (error as NodeJS.ErrnoException).code as number
-                : error
-                  ? 1
-                  : 0)
-              : 0,
+            exitCode,
           })
         }
       )
