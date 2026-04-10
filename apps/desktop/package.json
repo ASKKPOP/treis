@@ -12,10 +12,12 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^2",
     "@headlessui/react": "^2.2",
     "@treis/api-client": "workspace:*",
     "@treis/core": "workspace:*",
     "@treis/tools": "workspace:*",
+    "ai": "^5.0.172",
     "dotenv": "^17.4.1",
     "lucide-react": "^0.500",
     "react": "^19",

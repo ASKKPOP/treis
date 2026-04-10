@@ -32,6 +32,9 @@ importers:
 
   apps/cli:
     dependencies:
+      '@ai-sdk/anthropic':
+        specifier: ^2
+        version: 2.0.74(zod@4.3.6)
       '@treis/api-client':
         specifier: workspace:*
         version: link:../../packages/api-client
@@ -41,6 +44,9 @@ importers:
       '@treis/tools':
         specifier: workspace:*
         version: link:../../packages/tools
+      ai:
+        specifier: ^5.0.172
+        version: 5.0.172(zod@4.3.6)
       commander:
         specifier: ^14
         version: 14.0.3
@@ -63,6 +69,9 @@ importers:
 
   apps/desktop:
     dependencies:
+      '@ai-sdk/anthropic':
+        specifier: ^2
+        version: 2.0.74(zod@4.3.6)
       '@headlessui/react':
         specifier: ^2.2
         version: 2.2.10(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -75,6 +84,9 @@ importers:
       '@treis/tools':
         specifier: workspace:*
         version: link:../../packages/tools
+      ai:
+        specifier: ^5.0.172
+        version: 5.0.172(zod@4.3.6)
       dotenv:
         specifier: ^17.4.1
         version: 17.4.1
@@ -134,7 +146,7 @@ importers:
   packages/api-client:
     dependencies:
       '@ai-sdk/anthropic':
-        specifier: latest
+        specifier: ^3.0.68
         version: 3.0.68(zod@4.3.6)
       '@ai-sdk/openai':
         specifier: latest
@@ -146,7 +158,7 @@ importers:
         specifier: workspace:*
         version: link:../core
       ai:
-        specifier: ^5
+        specifier: ^5.0.172
         version: 5.0.172(zod@4.3.6)
       zod:
         specifier: ^4
@@ -167,6 +179,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@ai-sdk/anthropic':
+        specifier: ^2
+        version: 2.0.74(zod@4.3.6)
       '@treis/api-client':
         specifier: workspace:*
         version: link:../api-client
@@ -206,6 +221,13 @@ importers:
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.2)(jiti@2.6.1)(jsdom@26.1.0)(lightningcss@1.32.0)
 
   packages/errors:
+    dependencies:
+      '@ai-sdk/anthropic':
+        specifier: ^2
+        version: 2.0.74(zod@4.3.6)
+      ai:
+        specifier: ^5.0.172
+        version: 5.0.172(zod@4.3.6)
     devDependencies:
       tsup:
         specifier: ^8
@@ -219,12 +241,18 @@ importers:
 
   packages/tools:
     dependencies:
+      '@ai-sdk/anthropic':
+        specifier: ^2
+        version: 2.0.74(zod@4.3.6)
       '@treis/core':
         specifier: workspace:*
         version: link:../core
       '@treis/errors':
         specifier: workspace:*
         version: link:../errors
+      ai:
+        specifier: ^5.0.172
+        version: 5.0.172(zod@4.3.6)
       fast-glob:
         specifier: latest
         version: 3.3.3
@@ -252,6 +280,12 @@ packages:
 
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
+
+  '@ai-sdk/anthropic@2.0.74':
+    resolution: {integrity: sha512-1Z7142GVIF4XkcSvQpL6ij2c7J51dtm4/Z84P+O0bGBDZI1Nbvz897hXkJf2cfNhq5XdpvUYbI+oExXM7Ko8Zw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
 
   '@ai-sdk/anthropic@3.0.68':
     resolution: {integrity: sha512-BAd+fmgYoJMmGw0/uV+jRlXX60PyGxelA6Clp4cK/NI0dsyv9jOOwzQmKNaz2nwb+Jz7HqI7I70KK4XtU5EcXQ==}
@@ -3498,6 +3532,12 @@ snapshots:
   7zip-bin@5.2.0: {}
 
   '@adobe/css-tools@4.4.4': {}
+
+  '@ai-sdk/anthropic@2.0.74(zod@4.3.6)':
+    dependencies:
+      '@ai-sdk/provider': 2.0.1
+      '@ai-sdk/provider-utils': 3.0.23(zod@4.3.6)
+      zod: 4.3.6
 
   '@ai-sdk/anthropic@3.0.68(zod@4.3.6)':
     dependencies:

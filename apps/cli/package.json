@@ -11,9 +11,11 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^2",
     "@treis/api-client": "workspace:*",
     "@treis/core": "workspace:*",
     "@treis/tools": "workspace:*",
+    "ai": "^5.0.172",
     "commander": "^14",
     "dotenv": "^17.4.1",
     "ulid": "^3.0.2"

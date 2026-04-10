@@ -17,6 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^2",
     "@treis/api-client": "workspace:*",
     "@treis/errors": "workspace:*",
     "@treis/tools": "workspace:*",

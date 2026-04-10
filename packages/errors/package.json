@@ -16,10 +16,13 @@
     "build": "tsup",
     "test": "vitest run"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ai-sdk/anthropic": "^2",
+    "ai": "^5.0.172"
+  },
   "devDependencies": {
-    "typescript": "^5.8",
     "tsup": "^8",
+    "typescript": "^5.8",
     "vitest": "^3"
   }
 }
