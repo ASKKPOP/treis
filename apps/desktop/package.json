@@ -40,5 +40,6 @@
     "tailwindcss": "^4",
     "typescript": "^5.8",
     "vitest": "^3"
-  }
+  },
+  "license": "MIT"
 }

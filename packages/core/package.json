@@ -32,5 +32,6 @@
     "tsup": "^8",
     "typescript": "^5.8",
     "vitest": "^3"
-  }
+  },
+  "license": "MIT"
 }

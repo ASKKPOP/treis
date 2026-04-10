@@ -3,6 +3,7 @@ import { exec } from 'node:child_process'
 import type { Tool, ToolContext, PermissionCheckResult } from '../base/types.js'
 import { PermissionTier } from '../base/types.js'
 import { PermissionDeniedError } from '@treis/errors'
+import { assertWithinWorkspace } from '../utils/path-guard.js'
 
 const DEFAULT_TIMEOUT_MS = 30_000
 
@@ -129,7 +130,10 @@ export const BashTool: Tool<BashInput, BashOutput> = {
     }
 
     const timeout = input.timeoutMs ?? DEFAULT_TIMEOUT_MS
-    const cwd = input.cwd ?? ctx.workspaceRoot
+    // SECURITY: Validate cwd against workspace boundary (T-01-07) to prevent path traversal
+    const cwd = input.cwd
+      ? await assertWithinWorkspace(input.cwd, ctx.workspaceRoot)
+      : ctx.workspaceRoot
 
     return new Promise((resolve) => {
       const controller = new AbortController()

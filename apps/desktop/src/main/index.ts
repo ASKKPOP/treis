@@ -21,6 +21,9 @@ function createWindow(): void {
       preload: join(__dirname, '../preload/index.js'),
       contextIsolation: true,
       nodeIntegration: false,
+      // sandbox: false is intentional — the preload needs ipcRenderer from electron,
+      // which requires Node.js access in the preload process. The renderer is still
+      // fully isolated via contextIsolation: true + nodeIntegration: false.
       sandbox: false,
     },
   })
