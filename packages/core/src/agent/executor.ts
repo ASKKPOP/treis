@@ -1,4 +1,5 @@
 import { streamText } from 'ai'
+import type { ModelMessage, ToolSet } from 'ai'
 import { ulid } from 'ulid'
 import { StateMachine } from './state-machine.js'
 import { CircuitBreaker } from './circuit-breaker.js'
@@ -133,8 +134,8 @@ export async function runAgent(options: AgentRunOptions): Promise<void> {
     try {
       const result = streamText({
         model: currentModel as Parameters<typeof streamText>[0]['model'],
-        messages: messages as Parameters<typeof streamText>[0]['messages'],
-        tools: toolDefinitions,
+        messages: messages as unknown as ModelMessage[],
+        tools: toolDefinitions as unknown as ToolSet,
         maxRetries: 0, // Agent handles retries — don't let SDK retry
       })
 

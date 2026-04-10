@@ -1,4 +1,4 @@
-import type { PlanContract, ScopeViolation as ScopeViolationSchema } from '../plan-contract/schema.js'
+import type { PlanContract } from '../plan-contract/schema.js'
 import type { ScopeViolation } from '../plan-contract/scope-checker.js'
 import type { Tool, ToolContext } from '@treis/tools'
 import type { WorkspaceLayout } from '../session/workspace.js'
