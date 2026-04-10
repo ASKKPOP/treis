@@ -453,19 +453,19 @@ describe('runAgent — retry and escalation', () => {
       .mockReturnValueOnce({ fullStream: makeToolCallStream('readFile', 'tc-2', { path: 'a.ts' }) } as never)
       .mockReturnValueOnce({ fullStream: makeTextStream('Done') } as never)
 
-    const runPromise = runAgent({
-      contract: makeMockContract(),
-      tools: [mockTool as never],
-      model: {} as never,
-      consumer: (e) => events.push(e),
-      workspace: makeMockWorkspace(tmpDir),
-      sessionId: 's',
-      toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
-    })
-
-    // Advance timers to skip backoff
-    await vi.runAllTimersAsync()
-    await runPromise
+    // Run agent and timer advancement concurrently so backoff completes
+    await Promise.all([
+      runAgent({
+        contract: makeMockContract(),
+        tools: [mockTool as never],
+        model: {} as never,
+        consumer: (e) => events.push(e),
+        workspace: makeMockWorkspace(tmpDir),
+        sessionId: 's',
+        toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
+      }),
+      vi.runAllTimersAsync(),
+    ])
 
     const retryEvent = events.find(e => e.type === 'retry')
     expect(retryEvent).toBeDefined()
@@ -483,25 +483,28 @@ describe('runAgent — retry and escalation', () => {
       { toolName: 'readFile', result: { success: false, error: 'Persistent error', durationMs: 5 } },
     ])
 
-    // 4 streams: initial + 3 retries (but escalation fires at 3rd failure)
-    vi.mocked(streamText)
-      .mockReturnValue({ fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }) } as never)
+    // Use mockImplementation so a fresh async generator is created each call
+    // (mockReturnValue would reuse the same exhausted generator across retries)
+    vi.mocked(streamText).mockImplementation(() => ({
+      fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }),
+    } as never))
 
     const approveEscalation = vi.fn().mockResolvedValue(false)
 
-    const runPromise = runAgent({
-      contract: makeMockContract(),
-      tools: [mockTool as never],
-      model: {} as never,
-      consumer: (e) => events.push(e),
-      approveEscalation,
-      workspace: makeMockWorkspace(tmpDir),
-      sessionId: 's',
-      toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
-    })
-
-    await vi.runAllTimersAsync()
-    await runPromise
+    // Run the agent and timer advancement concurrently so backoff delays complete
+    await Promise.all([
+      runAgent({
+        contract: makeMockContract(),
+        tools: [mockTool as never],
+        model: {} as never,
+        consumer: (e) => events.push(e),
+        approveEscalation,
+        workspace: makeMockWorkspace(tmpDir),
+        sessionId: 's',
+        toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
+      }),
+      vi.runAllTimersAsync(),
+    ])
 
     expect(approveEscalation).toHaveBeenCalled()
     const callArg = approveEscalation.mock.calls[0]?.[0] as string
@@ -516,42 +519,40 @@ describe('runAgent — retry and escalation', () => {
     const mockTool = makeMockTool('readFile')
     const escalationModel = { name: 'claude-3-5-sonnet' }
 
-    // All tool calls fail until escalation
+    // Fail 3 times (initial + 2 retries), then succeed after escalation
     vi.mocked(executeTools)
       .mockResolvedValueOnce([{ toolName: 'readFile', result: { success: false, error: 'err', durationMs: 5 } }])
       .mockResolvedValueOnce([{ toolName: 'readFile', result: { success: false, error: 'err', durationMs: 5 } }])
       .mockResolvedValueOnce([{ toolName: 'readFile', result: { success: false, error: 'err', durationMs: 5 } }])
       .mockResolvedValueOnce([{ toolName: 'readFile', result: { success: true, data: 'ok', durationMs: 5 } }])
 
+    // Tool call streams for initial + retries; text stream for completion after escalation
     vi.mocked(streamText)
-      .mockReturnValue({ fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }) } as never)
+      .mockReturnValueOnce({ fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }) } as never)
+      .mockReturnValueOnce({ fullStream: makeToolCallStream('readFile', 'tc-2', { path: 'a.ts' }) } as never)
+      .mockReturnValueOnce({ fullStream: makeToolCallStream('readFile', 'tc-3', { path: 'a.ts' }) } as never)
+      .mockReturnValueOnce({ fullStream: makeToolCallStream('readFile', 'tc-4', { path: 'a.ts' }) } as never)
+      .mockReturnValue({ fullStream: makeTextStream('Escalated done') } as never)
 
     const approveEscalation = vi.fn().mockResolvedValue(true)
 
-    // Need to capture the model passed to streamText after escalation
-    // We'll check streamText was called multiple times (escalation model used after approval)
-
-    const runPromise = runAgent({
-      contract: makeMockContract(),
-      tools: [mockTool as never],
-      model: {} as never,
-      consumer: (e) => events.push(e),
-      approveEscalation,
-      escalationModel: escalationModel as never,
-      workspace: makeMockWorkspace(tmpDir),
-      sessionId: 's',
-      toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
-    })
-
-    await vi.runAllTimersAsync()
-
-    // We need more streams for after escalation
-    vi.mocked(streamText).mockReturnValue({ fullStream: makeTextStream('Escalated done') } as never)
-
-    await runPromise
+    await Promise.all([
+      runAgent({
+        contract: makeMockContract(),
+        tools: [mockTool as never],
+        model: {} as never,
+        consumer: (e) => events.push(e),
+        approveEscalation,
+        escalationModel: escalationModel as never,
+        workspace: makeMockWorkspace(tmpDir),
+        sessionId: 's',
+        toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
+      }),
+      vi.runAllTimersAsync(),
+    ])
 
     expect(approveEscalation).toHaveBeenCalled()
-    // streamText was called multiple times
+    // streamText was called multiple times (pre- and post-escalation)
     expect(vi.mocked(streamText).mock.calls.length).toBeGreaterThan(1)
   })
 
@@ -565,24 +566,26 @@ describe('runAgent — retry and escalation', () => {
       { toolName: 'readFile', result: { success: false, error: 'Persistent failure', durationMs: 5 } },
     ])
 
-    vi.mocked(streamText)
-      .mockReturnValue({ fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }) } as never)
+    // Use mockImplementation so a fresh async generator is created each call
+    vi.mocked(streamText).mockImplementation(() => ({
+      fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }),
+    } as never))
 
     const approveEscalation = vi.fn().mockResolvedValue(false)
 
-    const runPromise = runAgent({
-      contract: makeMockContract(),
-      tools: [mockTool as never],
-      model: {} as never,
-      consumer: (e) => events.push(e),
-      approveEscalation,
-      workspace: makeMockWorkspace(tmpDir),
-      sessionId: 's',
-      toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
-    })
-
-    await vi.runAllTimersAsync()
-    await runPromise
+    await Promise.all([
+      runAgent({
+        contract: makeMockContract(),
+        tools: [mockTool as never],
+        model: {} as never,
+        consumer: (e) => events.push(e),
+        approveEscalation,
+        workspace: makeMockWorkspace(tmpDir),
+        sessionId: 's',
+        toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
+      }),
+      vi.runAllTimersAsync(),
+    ])
 
     const failedEvent = events.find(e => e.type === 'failed')
     expect(failedEvent).toBeDefined()
@@ -640,10 +643,12 @@ describe('runAgent — execution limits', () => {
       { toolName: 'readFile', result: { success: true, data: 'ok', durationMs: 5 } },
     ])
 
-    // Always return tool calls — never text-only — to keep looping
-    vi.mocked(streamText).mockReturnValue({
-      fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }),
-    } as never)
+    // Use a unique path per step call to avoid triggering the circuit breaker
+    // (circuit breaker fires on 3 identical tool+input calls — we need 25+ steps)
+    let callCount = 0
+    vi.mocked(streamText).mockImplementation(() => ({
+      fullStream: makeToolCallStream('readFile', `tc-${++callCount}`, { path: `file-${callCount}.ts` }),
+    } as never))
 
     await runAgent({
       contract: makeMockContract(),
@@ -669,24 +674,24 @@ describe('runAgent — execution limits', () => {
       { toolName: 'readFile', result: { success: true, data: 'ok', durationMs: 5 } },
     ])
 
-    vi.mocked(streamText).mockReturnValue({
-      fullStream: makeToolCallStream('readFile', 'tc-1', { path: 'a.ts' }),
-    } as never)
+    // Use unique path per call to avoid circuit breaker, reach step or time limit
+    let callCount = 0
+    vi.mocked(streamText).mockImplementation(() => ({
+      fullStream: makeToolCallStream('readFile', `tc-${++callCount}`, { path: `file-${callCount}.ts` }),
+    } as never))
 
-    const runPromise = runAgent({
-      contract: makeMockContract(),
-      tools: [mockTool as never],
-      model: {} as never,
-      consumer: (e) => events.push(e),
-      workspace: makeMockWorkspace(tmpDir),
-      sessionId: 's',
-      toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
-    })
-
-    // Advance time past MAX_DURATION_MS (10 minutes)
-    await vi.advanceTimersByTimeAsync(11 * 60 * 1000)
-
-    await runPromise
+    await Promise.all([
+      runAgent({
+        contract: makeMockContract(),
+        tools: [mockTool as never],
+        model: {} as never,
+        consumer: (e) => events.push(e),
+        workspace: makeMockWorkspace(tmpDir),
+        sessionId: 's',
+        toolContext: { workspaceRoot: tmpDir, sessionId: 's', permissionGrants: new Set() },
+      }),
+      vi.advanceTimersByTimeAsync(11 * 60 * 1000),
+    ])
 
     const failedEvent = events.find(e => e.type === 'failed') as Extract<AgentEvent, { type: 'failed' }> | undefined
     expect(failedEvent).toBeDefined()
