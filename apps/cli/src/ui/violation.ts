@@ -1,10 +1,5 @@
 import type { Interface as ReadlineInterface } from 'node:readline/promises'
-import type { ViolationDecision } from '@treis/core'
-
-interface ScopeViolation {
-  toolName: string
-  reason: string
-}
+import type { ViolationDecision, ScopeViolation } from '@treis/core'
 
 export function buildViolationHandler(
   rl: ReadlineInterface,
@@ -12,7 +7,7 @@ export function buildViolationHandler(
   return async (violation: ScopeViolation): Promise<ViolationDecision> => {
     process.stdout.write('\n\n--- CONTRACT VIOLATION ---\n')
     process.stdout.write(`Tool: ${violation.toolName}\n`)
-    process.stdout.write(`Reason: ${violation.reason}\n\n`)
+    process.stdout.write(`Reason: ${violation.details}\n\n`)
     process.stdout.write('Options:\n')
     process.stdout.write('  1) Stop execution\n')
     process.stdout.write('  2) Amend scope and continue\n')

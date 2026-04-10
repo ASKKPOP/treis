@@ -59,11 +59,11 @@ export async function runCommand(task: string): Promise<void> {
 
     // 4. Prepare tools and context
     const tools = [
-      new FileReadTool(),
-      new GlobTool(),
-      new GrepTool(),
-      new FileWriteTool(),
-      new BashTool(),
+      FileReadTool,
+      GlobTool,
+      GrepTool,
+      FileWriteTool,
+      BashTool,
     ]
     const toolContext: ToolContext = {
       workspaceRoot: process.cwd(),

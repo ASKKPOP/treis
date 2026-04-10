@@ -95,20 +95,21 @@ export async function runBenchmark(fixtures: BenchmarkFixture[]): Promise<Benchm
       )
 
       const tools = [
-        new FileReadTool(),
-        new GlobTool(),
-        new GrepTool(),
-        new FileWriteTool(),
-        new BashTool(),
+        FileReadTool,
+        GlobTool,
+        GrepTool,
+        FileWriteTool,
+        BashTool,
       ]
 
       const toolContext: ToolContext = {
         workspaceRoot,
-        permissions: [
+        sessionId: workspaceId,
+        permissionGrants: new Set([
           PermissionTier.ReadOnly,
           PermissionTier.WriteFiles,
           PermissionTier.ExecuteShell,
-        ],
+        ]),
       }
 
       const consumer: AgentConsumer = (event: AgentEvent) => {
