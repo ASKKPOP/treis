@@ -49,13 +49,13 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 ### Agent Loop
 
 - [x] **AGENT-01**: Explicit state machine with mutable State object (IDLE -> PREPARE -> STREAM -> TOOLS -> EVALUATE -> NEXT/COMPLETE)
-- [ ] **AGENT-02**: Per-step streaming from model to consumer (CLI stdout or IPC channel)
-- [ ] **AGENT-03**: Tool dispatch respects concurrency partitioning (read-only concurrent, write serial)
+- [x] **AGENT-02**: Per-step streaming from model to consumer (CLI stdout or IPC channel)
+- [x] **AGENT-03**: Tool dispatch respects concurrency partitioning (read-only concurrent, write serial)
 - [x] **AGENT-04**: Retry on FAIL verdict: max 3 retries, exponential backoff (1s/2s/4s), error context injected
 - [x] **AGENT-05**: Model escalation on 3rd failure: local -> cloud if available and Builder confirms
 - [x] **AGENT-06**: Circuit breaker: same tool + identical input 3 consecutive times -> FATAL
-- [ ] **AGENT-07**: Loop detector, token budget, and time limit rails active during execution
-- [ ] **AGENT-08**: Compaction only fires at step boundaries, never mid-step
+- [x] **AGENT-07**: Loop detector, token budget, and time limit rails active during execution
+- [x] **AGENT-08**: Compaction only fires at step boundaries, never mid-step
 
 ### Session & Persistence
 
@@ -175,13 +175,13 @@ Deferred to future releases. Tracked but not in current roadmap.
 | PLAN-07 | Phase 2 | Complete |
 | PLAN-08 | Phase 2 | Complete |
 | AGENT-01 | Phase 2 | Complete |
-| AGENT-02 | Phase 2 | Pending |
-| AGENT-03 | Phase 2 | Pending |
+| AGENT-02 | Phase 2 | Complete |
+| AGENT-03 | Phase 2 | Complete |
 | AGENT-04 | Phase 2 | Complete |
 | AGENT-05 | Phase 2 | Complete |
 | AGENT-06 | Phase 2 | Complete |
-| AGENT-07 | Phase 2 | Pending |
-| AGENT-08 | Phase 2 | Pending |
+| AGENT-07 | Phase 2 | Complete |
+| AGENT-08 | Phase 2 | Complete |
 | CLI-01 | Phase 3 | Pending |
 | CLI-02 | Phase 3 | Pending |
 | CLI-03 | Phase 3 | Pending |

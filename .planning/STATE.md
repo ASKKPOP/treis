@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-stopped_at: Completed 02-engine-02-03-PLAN.md
-last_updated: "2026-04-10T07:07:11.336Z"
+stopped_at: Completed 02-engine-02-04-PLAN.md
+last_updated: "2026-04-10T07:24:00.069Z"
 last_activity: 2026-04-10
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 10
-  completed_plans: 8
-  percent: 80
+  completed_plans: 9
+  percent: 90
 ---
 
 # Project State
@@ -54,6 +54,7 @@ Progress: [██████████░░░░░░░░░░░░░
 | Phase 02-engine P01 | 4 | 3 tasks | 6 files |
 | Phase 02-engine P02 | 8 | 1 tasks | 5 files |
 | Phase 02-engine P03 | 3 | 2 tasks | 8 files |
+| Phase 02-engine P04 | 11 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,9 @@ Recent decisions affecting current work:
 - [Phase 02-engine]: model typed as object in PlanContractEngineConfig to avoid @ai-sdk/provider import in @treis/core — adapter lives in api-client
 - [Phase 02-engine]: RetryHandler is pure logic (no setTimeout) — executor applies delays in Plan 04
 - [Phase 02-engine]: CircuitBreaker key: toolName:JSON.stringify(input) for exact identical-call detection
+- [Phase 02-engine]: Circuit breaker cleared on retry not on success to distinguish intentional retries from infinite loops
+- [Phase 02-engine]: mockImplementation required over mockReturnValue for async generator mocks in vitest
+- [Phase 02-engine]: Text-only step (no tool calls) goes STREAM→EVALUATE→COMPLETE as model done signal
 
 ### Pending Todos
 
@@ -85,6 +89,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-10T07:07:11.331Z
-Stopped at: Completed 02-engine-02-03-PLAN.md
+Last session: 2026-04-10T07:24:00.063Z
+Stopped at: Completed 02-engine-02-04-PLAN.md
 Resume file: None

@@ -89,7 +89,7 @@ Plans:
 - [x] 02-01-PLAN.md — Plan Contract schema (Zod v4) + scope checker (micromatch) + dependency install
 - [x] 02-02-PLAN.md — Plan Contract engine (generateObject dialogue: clarify + propose + seal)
 - [x] 02-03-PLAN.md — Agent loop types, state machine, circuit breaker, retry handler
-- [ ] 02-04-PLAN.md — Agent executor (streaming loop, tool dispatch, scope pre-hook, retry + escalation)
+- [x] 02-04-PLAN.md — Agent executor (streaming loop, tool dispatch, scope pre-hook, retry + escalation)
 - [ ] 02-05-PLAN.md — Integration: barrel exports, build verification, full test suite gate
 
 ### Phase 3: CLI
