@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-stopped_at: Completed 02-engine-02-04-PLAN.md
-last_updated: "2026-04-10T07:24:00.069Z"
+stopped_at: Completed 02-engine-02-05-PLAN.md
+last_updated: "2026-04-10T07:31:07.581Z"
 last_activity: 2026-04-10
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 10
-  completed_plans: 9
-  percent: 90
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -55,6 +55,7 @@ Progress: [██████████░░░░░░░░░░░░░
 | Phase 02-engine P02 | 8 | 1 tasks | 5 files |
 | Phase 02-engine P03 | 3 | 2 tasks | 8 files |
 | Phase 02-engine P04 | 11 | 1 tasks | 2 files |
+| Phase 02-engine P05 | 6 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,8 @@ Recent decisions affecting current work:
 - [Phase 02-engine]: Circuit breaker cleared on retry not on success to distinguish intentional retries from infinite loops
 - [Phase 02-engine]: mockImplementation required over mockReturnValue for async generator mocks in vitest
 - [Phase 02-engine]: Text-only step (no tool calls) goes STREAM→EVALUATE→COMPLETE as model done signal
+- [Phase 02-engine]: Export ViolationDecision only from plan-contract barrel; agent barrel omits it to avoid re-export ambiguity
+- [Phase 02-engine]: Cast messages and toolDefinitions via 'as unknown as' to ModelMessage[]/ToolSet in executor.ts to fix DTS overload-resolution errors without changing runtime behavior
 
 ### Pending Todos
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-10T07:24:00.063Z
-Stopped at: Completed 02-engine-02-04-PLAN.md
+Last session: 2026-04-10T07:31:07.575Z
+Stopped at: Completed 02-engine-02-05-PLAN.md
 Resume file: None

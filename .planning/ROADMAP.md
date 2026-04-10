@@ -48,7 +48,7 @@ Every phase follows the Treis Development Pipeline — no exceptions:
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Monorepo, model adapters, tool system, and session persistence — everything the engine depends on
-- [ ] **Phase 2: Engine** - Plan Contract engine and Agent loop — the core intelligence that makes plans complete
+- [x] **Phase 2: Engine** - Plan Contract engine and Agent loop — the core intelligence that makes plans complete (completed 2026-04-10)
 - [ ] **Phase 3: CLI** - Terminal interface and benchmark suite — proves the engine works end-to-end
 - [ ] **Phase 4: Desktop** - Electron app wraps the proven engine with a visual Plan Contract flow
 
@@ -83,14 +83,14 @@ Plans:
   3. A failing step retries up to 3 times with error context injected; on 3rd failure the system offers local->cloud escalation
   4. The same tool called with identical input 3 consecutive times triggers a FATAL circuit-breaker interrupt
   5. A tool call that would violate the sealed scope boundary triggers a FATAL interrupt with Stop/Amend/Continue options
-**Plans:** 3/5 plans executed
+**Plans:** 5/5 plans complete
 
 Plans:
 - [x] 02-01-PLAN.md — Plan Contract schema (Zod v4) + scope checker (micromatch) + dependency install
 - [x] 02-02-PLAN.md — Plan Contract engine (generateObject dialogue: clarify + propose + seal)
 - [x] 02-03-PLAN.md — Agent loop types, state machine, circuit breaker, retry handler
 - [x] 02-04-PLAN.md — Agent executor (streaming loop, tool dispatch, scope pre-hook, retry + escalation)
-- [ ] 02-05-PLAN.md — Integration: barrel exports, build verification, full test suite gate
+- [x] 02-05-PLAN.md — Integration: barrel exports, build verification, full test suite gate
 
 ### Phase 3: CLI
 **Goal**: A developer can run `treis "task"` in a terminal and complete a full Plan Contract flow end-to-end; the benchmark suite measures success rate against 10 reference plans
@@ -125,6 +125,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
-| 2. Engine | 3/5 | In Progress|  |
+| 2. Engine | 5/5 | Complete   | 2026-04-10 |
 | 3. CLI | 0/TBD | Not started | - |
 | 4. Desktop | 0/TBD | Not started | - |
