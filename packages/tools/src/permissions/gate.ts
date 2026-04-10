@@ -1,4 +1,4 @@
-import { PermissionDeniedError } from '@treis/core'
+import { PermissionDeniedError } from '@treis/errors'
 import { PermissionTier, type Tool, type ToolContext } from '../base/types.js'
 
 /**

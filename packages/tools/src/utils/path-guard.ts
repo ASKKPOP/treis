@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
 import { realpath } from 'node:fs/promises'
-import { PathTraversalError } from '@treis/core'
+import { PathTraversalError } from '@treis/errors'
 
 /**
  * Assert that targetPath is within workspaceRoot per D-15.

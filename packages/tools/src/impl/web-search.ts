@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import type { Tool, ToolContext, PermissionCheckResult } from '../base/types.js'
 import { PermissionTier } from '../base/types.js'
-import { ToolExecutionError } from '@treis/core'
+import { ToolExecutionError } from '@treis/errors'
 
 const inputSchema = z.object({
   query: z.string().describe('Search query string'),

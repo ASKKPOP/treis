@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: verifying
-stopped_at: Completed 02-engine-02-05-PLAN.md
-last_updated: "2026-04-10T07:31:07.581Z"
-last_activity: 2026-04-10
+status: executing
+stopped_at: Phase 2 Engine — COMPLETE
+last_updated: "2026-04-10T08:14:41.093Z"
+last_activity: 2026-04-10 -- Phase 3 planning complete
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 10
+  total_plans: 13
   completed_plans: 10
-  percent: 100
+  percent: 77
 ---
 
 # Project State
@@ -21,34 +21,35 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-09)
 
 **Core value:** Plan Contracts — AI proposes, Builder picks, scope sealed before execution. Multi-step AI plans complete end-to-end.
-**Current focus:** Phase 02 — Engine (next)
+**Current focus:** Phase 03 — CLI (next)
 
 ## Current Position
 
-Phase: 01 (Foundation) — COMPLETE ✓
+Phase: 02 (Engine) — COMPLETE ✓
 Plan: 5 of 5
-Status: Phase complete — ready for verification
-Last activity: 2026-04-10
+Status: Ready to execute
+Last activity: 2026-04-10 -- Phase 3 planning complete
 
-Progress: [██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 25%
+Progress: [████████████████████░░░░░░░░░░░░░░░░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 5
+- Total plans completed: 10
 - Average duration: ~5 min/plan
-- Total execution time: ~25 min
+- Total execution time: ~50 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-Foundation | 5/5 | ~25 min | ~5 min |
+| 02-Engine | 5/5 | ~25 min | ~5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01, 01-02, 01-03, 01-04, 01-05
+- Last 5 plans: 02-01, 02-02, 02-03, 02-04, 02-05
 - Trend: Steady execution, all plans completed in single pass
 
 | Phase 02-engine P01 | 4 | 3 tasks | 6 files |
@@ -81,17 +82,18 @@ Recent decisions affecting current work:
 - [Phase 02-engine]: Text-only step (no tool calls) goes STREAM→EVALUATE→COMPLETE as model done signal
 - [Phase 02-engine]: Export ViolationDecision only from plan-contract barrel; agent barrel omits it to avoid re-export ambiguity
 - [Phase 02-engine]: Cast messages and toolDefinitions via 'as unknown as' to ModelMessage[]/ToolSet in executor.ts to fix DTS overload-resolution errors without changing runtime behavior
+- [Phase 02-engine]: Extracted @treis/errors package to hold TreisError, breaking circular DTS dependency between @treis/tools and @treis/core
 
 ### Pending Todos
 
-None yet.
+None.
 
 ### Blockers/Concerns
 
-- Eng review flagged 6 gaps at 78% readiness. Review TREIS_ARCHITECTURE_SPEC.md gaps before Phase 2 planning.
+None. Phase 2 is complete and verified.
 
 ## Session Continuity
 
-Last session: 2026-04-10T07:31:07.575Z
-Stopped at: Completed 02-engine-02-05-PLAN.md
+Last session: 2026-04-10T00:39:45.000Z
+Stopped at: Phase 2 Engine — COMPLETE
 Resume file: None

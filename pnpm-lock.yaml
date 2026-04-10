@@ -101,6 +101,9 @@ importers:
       '@treis/api-client':
         specifier: workspace:*
         version: link:../api-client
+      '@treis/errors':
+        specifier: workspace:*
+        version: link:../errors
       '@treis/tools':
         specifier: workspace:*
         version: link:../tools
@@ -133,11 +136,26 @@ importers:
         specifier: ^3
         version: 3.2.4(@types/node@22.19.17)
 
+  packages/errors:
+    devDependencies:
+      tsup:
+        specifier: ^8
+        version: 8.5.1(postcss@8.5.9)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.8
+        version: 5.9.3
+      vitest:
+        specifier: ^3
+        version: 3.2.4(@types/node@22.19.17)
+
   packages/tools:
     dependencies:
       '@treis/core':
         specifier: workspace:*
         version: link:../core
+      '@treis/errors':
+        specifier: workspace:*
+        version: link:../errors
       fast-glob:
         specifier: latest
         version: 3.3.3

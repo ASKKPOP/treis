@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@treis/core": "workspace:*",
+    "@treis/errors": "workspace:*",
     "zod": "^4",
     "fast-glob": "latest"
   },

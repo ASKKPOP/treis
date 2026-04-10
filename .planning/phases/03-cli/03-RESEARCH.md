@@ -617,24 +617,24 @@ Step 2.5 SKIPPED — this is a greenfield CLI phase, not a rename/refactor phase
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Model configuration strategy**
+1. **Model configuration strategy** — RESOLVED: Use env vars `TREIS_ANTHROPIC_API_KEY` / `TREIS_OLLAMA_HOST`. Config file is Phase 4+. Implemented in 03-01.
    - What we know: `createSlotManager` requires explicit provider + modelId config
    - What's unclear: Where does the CLI read this config? Env vars? `~/.treis/config.json`? CLI flags?
    - Recommendation: Use env vars for Phase 3 (TREIS_MODEL_PROVIDER, TREIS_MODEL_ID). Config file is Phase 4+.
 
-2. **ToolContext workspaceRoot**
+2. **ToolContext workspaceRoot** — RESOLVED: Default to `process.cwd()`. Implemented in 03-02.
    - What we know: `ToolContext` requires `workspaceRoot: string` for path-guarding
    - What's unclear: Should it default to `process.cwd()` or a user-specified directory?
    - Recommendation: Default to `process.cwd()` in Phase 3. User can override via `--workspace` flag.
 
-3. **Benchmark fixture domains**
+3. **Benchmark fixture domains** — RESOLVED: Simple deterministic tasks (file creation, text generation). Implemented in 03-03.
    - What we know: BENCH-01 requires 10 plans covering code, writing, research, data, mixed
    - What's unclear: What specific tasks ensure 80% success with small local models?
    - Recommendation: Choose simple, deterministic tasks (e.g., "create a hello world in Python", "write a 3-sentence summary of X"). Avoid tasks requiring external URLs (WebSearch) since network access may not be available.
 
-4. **Success criteria verification in result screen**
+4. **Success criteria verification in result screen** — RESOLVED: Phase 3 displays `[ ]` (unchecked) for all criteria with manual verification instruction. This satisfies CLI-06 as a display requirement. Auto-verification is Phase 4+. Implemented in 03-02.
    - What we know: CLI-06 requires "pass/fail per criterion" but the agent loop does not return per-criterion outcomes
    - What's unclear: Is this manually inspected by the Builder, or should the CLI auto-detect (e.g., check if a file exists)?
    - Recommendation: Phase 3 shows criteria as `[ ]` (unchecked) with instruction to verify manually. Auto-verification is Phase 4+. This satisfies CLI-06 as a display requirement.

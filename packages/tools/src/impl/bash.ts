@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { exec } from 'node:child_process'
 import type { Tool, ToolContext, PermissionCheckResult } from '../base/types.js'
 import { PermissionTier } from '../base/types.js'
-import { PermissionDeniedError } from '@treis/core'
+import { PermissionDeniedError } from '@treis/errors'
 
 const DEFAULT_TIMEOUT_MS = 30_000
 

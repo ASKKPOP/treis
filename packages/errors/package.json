@@ -1,5 +1,5 @@
 {
-  "name": "@treis/core",
+  "name": "@treis/errors",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -16,20 +16,10 @@
     "build": "tsup",
     "test": "vitest run"
   },
-  "dependencies": {
-    "@treis/api-client": "workspace:*",
-    "@treis/errors": "workspace:*",
-    "@treis/tools": "workspace:*",
-    "ai": "5.0.172",
-    "micromatch": "^4.0.8",
-    "pino": "^9",
-    "ulid": "^3.0.2",
-    "zod": "^4"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/micromatch": "^4.0.10",
-    "tsup": "^8",
     "typescript": "^5.8",
+    "tsup": "^8",
     "vitest": "^3"
   }
 }
