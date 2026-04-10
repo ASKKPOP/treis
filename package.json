@@ -1,0 +1,25 @@
+{
+  "name": "treis",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint packages/ apps/ --ext .ts,.tsx",
+    "typecheck": "tsc -b"
+  },
+  "devDependencies": {
+    "typescript": "^5.8",
+    "tsup": "^8",
+    "vitest": "^3",
+    "@vitest/coverage-v8": "latest",
+    "eslint": "^9",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest"
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  }
+}
