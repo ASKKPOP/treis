@@ -101,8 +101,12 @@ Plans:
   2. A contract violation in the CLI displays the 3 options (Stop / Amend / Continue) and responds correctly to Builder input
   3. The result screen shows a success criteria checklist with pass/fail per criterion
   4. The benchmark runner executes all 10 reference plans and reports a measured success rate; the rate meets or exceeds 80%
-**Plans**: TBD
-**UI hint**: yes
+**Plans:** 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — CLI scaffold, readline singleton, dialogue and options UI, run command (contract negotiation)
+- [ ] 03-02-PLAN.md — Execution stream consumer, violation/escalation handlers, result screen, full flow wiring
+- [ ] 03-03-PLAN.md — Benchmark suite: 10 reference plan fixtures, runner, Vitest test with 80% threshold
 
 ### Phase 4: Desktop
 **Goal**: The Electron app delivers the full Plan Contract flow visually — intent input through result screen — with IPC streaming from the core engine, and a DMG ships for macOS distribution
@@ -125,6 +129,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
-| 2. Engine | 5/5 | Complete   | 2026-04-10 |
-| 3. CLI | 0/TBD | Not started | - |
+| 2. Engine | 5/5 | Complete ✓ | 2026-04-10 |
+| 3. CLI | 0/3 | In progress | - |
 | 4. Desktop | 0/TBD | Not started | - |
