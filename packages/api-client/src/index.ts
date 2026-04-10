@@ -12,6 +12,13 @@ export type {
 // Adapters
 export { createOllamaAdapter } from './adapters/ollama.js'
 export { createAnthropicAdapter } from './adapters/anthropic.js'
+export { createOpenAIAdapter } from './adapters/openai.js'
+export { createGeminiAdapter } from './adapters/gemini.js'
+export { createMistralAdapter } from './adapters/mistral.js'
+export { createGrokAdapter } from './adapters/grok.js'
+
+// Provider type
+export type { ProviderType } from './adapters/types.js'
 
 // Health check
 export { checkModelHealth } from './health.js'

@@ -1,6 +1,10 @@
 import type { ModelAdapter, ModelSlot, SlotConfig } from './adapters/types.js'
 import { createOllamaAdapter } from './adapters/ollama.js'
 import { createAnthropicAdapter } from './adapters/anthropic.js'
+import { createOpenAIAdapter } from './adapters/openai.js'
+import { createGeminiAdapter } from './adapters/gemini.js'
+import { createMistralAdapter } from './adapters/mistral.js'
+import { createGrokAdapter } from './adapters/grok.js'
 
 export interface SlotManagerConfig {
   slotA: SlotConfig  // strongest model (primary reasoning)
@@ -19,6 +23,14 @@ function buildAdapter(slotConfig: SlotConfig): ModelAdapter {
       return createOllamaAdapter()
     case 'anthropic':
       return createAnthropicAdapter()
+    case 'openai':
+      return createOpenAIAdapter()
+    case 'gemini':
+      return createGeminiAdapter()
+    case 'mistral':
+      return createMistralAdapter()
+    case 'grok':
+      return createGrokAdapter()
     default: {
       const _exhaustive: never = slotConfig.provider
       throw new Error(`Unknown provider: ${_exhaustive}`)

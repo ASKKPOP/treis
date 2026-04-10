@@ -5,9 +5,11 @@ import type { LanguageModelV3 } from '@ai-sdk/provider'
  * Both Ollama and Anthropic adapters implement this interface,
  * enabling the agent loop to call streamText interchangeably per MODEL-04.
  */
+export type ProviderType = 'ollama' | 'anthropic' | 'openai' | 'gemini' | 'mistral' | 'grok'
+
 export interface ModelAdapter {
   readonly name: string
-  readonly providerType: 'ollama' | 'anthropic'
+  readonly providerType: ProviderType
   getModel(modelId: string): LanguageModelV3
   checkCapabilities(modelId: string): Promise<ModelCapabilities>
 }
@@ -22,7 +24,7 @@ export type ModelSlot = 'A' | 'B'
 
 export interface SlotConfig {
   slot: ModelSlot
-  provider: 'ollama' | 'anthropic'
+  provider: ProviderType
   modelId: string
   role: 'strongest' | 'fastest'
 }
