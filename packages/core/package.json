@@ -21,7 +21,7 @@
     "@treis/api-client": "workspace:*",
     "@treis/errors": "workspace:*",
     "@treis/tools": "workspace:*",
-    "ai": "5.0.172",
+    "ai": "6.0.158",
     "micromatch": "^4.0.8",
     "pino": "^9",
     "ulid": "^3.0.2",

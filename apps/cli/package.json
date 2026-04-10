@@ -15,7 +15,7 @@
     "@treis/api-client": "workspace:*",
     "@treis/core": "workspace:*",
     "@treis/tools": "workspace:*",
-    "ai": "^5.0.172",
+    "ai": "^6.0.158",
     "commander": "^14",
     "dotenv": "^17.4.1",
     "ulid": "^3.0.2"

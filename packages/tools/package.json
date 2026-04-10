@@ -20,7 +20,7 @@
     "@ai-sdk/anthropic": "^2",
     "@treis/core": "workspace:*",
     "@treis/errors": "workspace:*",
-    "ai": "^5.0.172",
+    "ai": "^6.0.158",
     "fast-glob": "latest",
     "zod": "^4"
   },

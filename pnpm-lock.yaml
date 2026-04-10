@@ -45,8 +45,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tools
       ai:
-        specifier: ^5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: ^6.0.158
+        version: 6.0.158(zod@4.3.6)
       commander:
         specifier: ^14
         version: 14.0.3
@@ -85,8 +85,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tools
       ai:
-        specifier: ^5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: ^6.0.158
+        version: 6.0.158(zod@4.3.6)
       dotenv:
         specifier: ^17.4.1
         version: 17.4.1
@@ -146,20 +146,20 @@ importers:
   packages/api-client:
     dependencies:
       '@ai-sdk/anthropic':
-        specifier: ^2.0.74
-        version: 2.0.74(zod@4.3.6)
+        specifier: ^3.0.68
+        version: 3.0.68(zod@4.3.6)
       '@ai-sdk/openai':
         specifier: latest
         version: 3.0.52(zod@4.3.6)
       '@ai-sdk/provider':
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^3.0.8
+        version: 3.0.8
       '@treis/core':
         specifier: workspace:*
         version: link:../core
       ai:
-        specifier: ^5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: ^6.0.158
+        version: 6.0.158(zod@4.3.6)
       zod:
         specifier: ^4
         version: 4.3.6
@@ -192,8 +192,8 @@ importers:
         specifier: workspace:*
         version: link:../tools
       ai:
-        specifier: 5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: 6.0.158
+        version: 6.0.158(zod@4.3.6)
       micromatch:
         specifier: ^4.0.8
         version: 4.0.8
@@ -226,8 +226,8 @@ importers:
         specifier: ^2
         version: 2.0.74(zod@4.3.6)
       ai:
-        specifier: ^5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: ^6.0.158
+        version: 6.0.158(zod@4.3.6)
     devDependencies:
       tsup:
         specifier: ^8
@@ -251,8 +251,8 @@ importers:
         specifier: workspace:*
         version: link:../errors
       ai:
-        specifier: ^5.0.172
-        version: 5.0.172(zod@4.3.6)
+        specifier: ^6.0.158
+        version: 6.0.158(zod@4.3.6)
       fast-glob:
         specifier: latest
         version: 3.3.3
@@ -287,8 +287,14 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/gateway@2.0.76':
-    resolution: {integrity: sha512-NoL38IElvxdxxjnLDPZKapb2oFyZCMhZ3qXHyERpXC5DrRO9CwkY/48/0iXihVeG3srZ04xmxMjjgdmtE8yeQQ==}
+  '@ai-sdk/anthropic@3.0.68':
+    resolution: {integrity: sha512-BAd+fmgYoJMmGw0/uV+jRlXX60PyGxelA6Clp4cK/NI0dsyv9jOOwzQmKNaz2nwb+Jz7HqI7I70KK4XtU5EcXQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
+  '@ai-sdk/gateway@3.0.95':
+    resolution: {integrity: sha512-ZmUNNbZl3V42xwQzPaNUi+s8eqR2lnrxf0bvB6YbLXpLjHYv0k2Y78t12cNOfY0bxGeuVVTLyk856uLuQIuXEQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -1463,8 +1469,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@5.0.172:
-    resolution: {integrity: sha512-MjHohHMW9HkdsmVUA/gfV3FYeezu+cAXADg2b8HdRwuHjEg3GsL0WqjIfgb0Z9ntEqyzcgy9oJKe4yloEIpQAw==}
+  ai@6.0.158:
+    resolution: {integrity: sha512-gLTp1UXFtMqKUi3XHs33K7UFglbvojkxF/aq337TxnLGOhHIW9+GyP2jwW4hYX87f1es+wId3VQoPRRu9zEStQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -3533,10 +3539,16 @@ snapshots:
       '@ai-sdk/provider-utils': 3.0.23(zod@4.3.6)
       zod: 4.3.6
 
-  '@ai-sdk/gateway@2.0.76(zod@4.3.6)':
+  '@ai-sdk/anthropic@3.0.68(zod@4.3.6)':
     dependencies:
-      '@ai-sdk/provider': 2.0.1
-      '@ai-sdk/provider-utils': 3.0.23(zod@4.3.6)
+      '@ai-sdk/provider': 3.0.8
+      '@ai-sdk/provider-utils': 4.0.23(zod@4.3.6)
+      zod: 4.3.6
+
+  '@ai-sdk/gateway@3.0.95(zod@4.3.6)':
+    dependencies:
+      '@ai-sdk/provider': 3.0.8
+      '@ai-sdk/provider-utils': 4.0.23(zod@4.3.6)
       '@vercel/oidc': 3.1.0
       zod: 4.3.6
 
@@ -4682,11 +4694,11 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@5.0.172(zod@4.3.6):
+  ai@6.0.158(zod@4.3.6):
     dependencies:
-      '@ai-sdk/gateway': 2.0.76(zod@4.3.6)
-      '@ai-sdk/provider': 2.0.1
-      '@ai-sdk/provider-utils': 3.0.23(zod@4.3.6)
+      '@ai-sdk/gateway': 3.0.95(zod@4.3.6)
+      '@ai-sdk/provider': 3.0.8
+      '@ai-sdk/provider-utils': 4.0.23(zod@4.3.6)
       '@opentelemetry/api': 1.9.0
       zod: 4.3.6
 

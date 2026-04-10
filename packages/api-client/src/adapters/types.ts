@@ -1,4 +1,4 @@
-import type { LanguageModelV2 } from '@ai-sdk/provider'
+import type { LanguageModelV3 } from '@ai-sdk/provider'
 
 /**
  * Unified model adapter interface.
@@ -8,7 +8,7 @@ import type { LanguageModelV2 } from '@ai-sdk/provider'
 export interface ModelAdapter {
   readonly name: string
   readonly providerType: 'ollama' | 'anthropic'
-  getModel(modelId: string): LanguageModelV2
+  getModel(modelId: string): LanguageModelV3
   checkCapabilities(modelId: string): Promise<ModelCapabilities>
 }
 

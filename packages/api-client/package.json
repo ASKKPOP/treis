@@ -17,11 +17,11 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^2.0.74",
+    "@ai-sdk/anthropic": "^3.0.68",
     "@ai-sdk/openai": "latest",
-    "@ai-sdk/provider": "^2.0.1",
+    "@ai-sdk/provider": "^3.0.8",
     "@treis/core": "workspace:*",
-    "ai": "^5.0.172",
+    "ai": "^6.0.158",
     "zod": "^4"
   },
   "devDependencies": {

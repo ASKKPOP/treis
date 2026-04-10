@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^2",
-    "ai": "^5.0.172"
+    "ai": "^6.0.158"
   },
   "devDependencies": {
     "tsup": "^8",
