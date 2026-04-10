@@ -35,6 +35,7 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
   const [isAiTyping, setIsAiTyping] = useState(true)
   const [inputText, setInputText] = useState('')
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const answersRef = useRef<string[]>([])
@@ -73,9 +74,9 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
       }
     })
 
-    // Subscribe to status events (clarify-response, options-response)
+    // Subscribe to status events (clarify-response, options-response, failed)
     const unsubStatus = window.treis.onStatus((ev: unknown) => {
-      const event = ev as StatusEvent
+      const event = ev as StatusEvent & { type?: string; reason?: string }
       if (event?.type === 'clarify-response' && Array.isArray(event.questions)) {
         const qs = event.questions as string[]
         setQuestions(qs)
@@ -91,6 +92,9 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
         }
         // Clear streaming accumulator
         setCurrentAiText('')
+      } else if (event?.type === 'failed') {
+        setIsAiTyping(false)
+        setErrorMessage(event.reason ?? 'The AI model failed to respond. Check that Ollama is running or your API key is set.')
       }
     })
 
@@ -169,10 +173,19 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
           )}
 
           {/* Typing indicator when AI is thinking but no tokens yet */}
-          {isAiTyping && !currentAiText && (
+          {isAiTyping && !currentAiText && !errorMessage && (
             <div className="bg-[#1A1D27] text-[#8B8FA8] self-start p-4 rounded-lg">
               <span className="font-mono text-[13px] leading-[1.6] animate-pulse">
                 ...
+              </span>
+            </div>
+          )}
+
+          {/* Error state */}
+          {errorMessage && (
+            <div className="bg-[#2A1A1A] border border-[#7C3030] text-[#F08080] self-start p-4 rounded-lg max-w-[85%]">
+              <span className="font-mono text-[13px] leading-[1.6]">
+                {errorMessage}
               </span>
             </div>
           )}
@@ -189,8 +202,8 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={handleKeyDown}
-              disabled={isAiTyping}
-              placeholder={isAiTyping ? 'AI is thinking...' : 'Reply to the AI...'}
+              disabled={isAiTyping || !!errorMessage}
+              placeholder={errorMessage ? 'Error — see above' : isAiTyping ? 'AI is thinking...' : 'Reply to the AI...'}
               className={[
                 'flex-1 h-[44px] rounded-lg px-4',
                 'bg-[#1A1D27] border border-[#2A2D3E]',
@@ -198,18 +211,18 @@ export function Dialogue({ intent, onComplete }: DialogueProps) {
                 'placeholder:text-[#8B8FA8]',
                 'outline-none focus:border-[#7C6AF7] focus:ring-2 focus:ring-[#7C6AF7]',
                 'transition-all',
-                isAiTyping ? 'opacity-50 cursor-not-allowed' : '',
+                (isAiTyping || !!errorMessage) ? 'opacity-50 cursor-not-allowed' : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
             />
             <button
               onClick={handleSend}
-              disabled={isAiTyping || !inputText.trim()}
+              disabled={isAiTyping || !!errorMessage || !inputText.trim()}
               className={[
                 'h-[44px] w-[44px] rounded-lg flex items-center justify-center',
                 'transition-all',
-                !isAiTyping && inputText.trim()
+                !isAiTyping && !errorMessage && inputText.trim()
                   ? 'bg-[#7C6AF7] hover:bg-[#6B59E6] cursor-pointer text-white'
                   : 'bg-[#7C6AF7] opacity-40 cursor-not-allowed text-white',
               ]
