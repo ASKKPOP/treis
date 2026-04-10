@@ -59,11 +59,11 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 
 ### Session & Persistence
 
-- [ ] **SESS-01**: Session state with mutable store pattern (setState callback, shallow comparison, listener Set)
-- [ ] **SESS-02**: Conversation history persisted as append-only JSONL at ~/.treis/sessions/{sid}.jsonl
-- [ ] **SESS-03**: Workspace layout at ~/.treis/workspaces/{id}/ with config.json, plan-contracts/, traces/, sessions/
-- [ ] **SESS-04**: JSONL trace logging: every tool call, verdict, retry, duration_ms with execution_id correlation
-- [ ] **SESS-05**: Step-level checkpoint saved after every completed step (enables resume)
+- [x] **SESS-01**: Session state with mutable store pattern (setState callback, shallow comparison, listener Set)
+- [x] **SESS-02**: Conversation history persisted as append-only JSONL at ~/.treis/sessions/{sid}.jsonl
+- [x] **SESS-03**: Workspace layout at ~/.treis/workspaces/{id}/ with config.json, plan-contracts/, traces/, sessions/
+- [x] **SESS-04**: JSONL trace logging: every tool call, verdict, retry, duration_ms with execution_id correlation
+- [x] **SESS-05**: Step-level checkpoint saved after every completed step (enables resume)
 
 ### CLI App
 
@@ -161,11 +161,11 @@ Deferred to future releases. Tracked but not in current roadmap.
 | TOOL-08 | Phase 1 | Pending |
 | TOOL-09 | Phase 1 | Pending |
 | TOOL-10 | Phase 1 | Pending |
-| SESS-01 | Phase 1 | Pending |
-| SESS-02 | Phase 1 | Pending |
-| SESS-03 | Phase 1 | Pending |
-| SESS-04 | Phase 1 | Pending |
-| SESS-05 | Phase 1 | Pending |
+| SESS-01 | Phase 1 | Complete |
+| SESS-02 | Phase 1 | Complete |
+| SESS-03 | Phase 1 | Complete |
+| SESS-04 | Phase 1 | Complete |
+| SESS-05 | Phase 1 | Complete |
 | PLAN-01 | Phase 2 | Pending |
 | PLAN-02 | Phase 2 | Pending |
 | PLAN-03 | Phase 2 | Pending |

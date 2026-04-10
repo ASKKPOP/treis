@@ -67,11 +67,11 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 5 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Monorepo scaffold with pnpm workspace, TypeScript, ESLint, Vitest, and typed error hierarchy
-- [ ] 01-02-PLAN.md — Model adapters (Ollama + Anthropic) with unified streamText, health checks, and slot manager
-- [ ] 01-03-PLAN.md — Tool system foundation: types, permissions, executor, and read-only tools (FileRead, Glob, Grep)
-- [ ] 01-04-PLAN.md — Write/dangerous tools: FileWrite, BashTool (metacharacter blocking), WebSearch
-- [ ] 01-05-PLAN.md — Session persistence: state store, workspace bootstrap, JSONL traces, checkpoints
+- [x] 01-01-PLAN.md — Monorepo scaffold with pnpm workspace, TypeScript, ESLint, Vitest, and typed error hierarchy
+- [x] 01-02-PLAN.md — Model adapters (Ollama + Anthropic) with unified streamText, health checks, and slot manager
+- [x] 01-03-PLAN.md — Tool system foundation: types, permissions, executor, and read-only tools (FileRead, Glob, Grep)
+- [x] 01-04-PLAN.md — Write/dangerous tools: FileWrite, BashTool (metacharacter blocking), WebSearch
+- [x] 01-05-PLAN.md — Session persistence: state store, workspace bootstrap, JSONL traces, checkpoints
 
 ### Phase 2: Engine
 **Goal**: The Plan Contract engine and Agent loop run correctly — a Builder can go from intent to sealed contract, the loop executes steps with retries and circuit breaking, and scope violations interrupt execution
