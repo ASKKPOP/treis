@@ -12,16 +12,6 @@
 <a href="./.env.example">Config</a>
 </p>
 
-<p align="center">
-<a href="https://star-history.com/#ASKKPOP/treis&Date">
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date&theme=dark" />
-<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date" />
-<img alt="Star history for ASKKPOP/treis" src="https://api.star-history.com/svg?repos=ASKKPOP/treis&type=Date" width="600" />
-</picture>
-</a>
-</p>
-
 Treis is an open-source AI work execution platform built around **Plan Contracts** — scope-sealed agreements between the user and the AI that prevent silent scope creep and make multi-step plans actually complete.
 
 > [!IMPORTANT]
