@@ -130,5 +130,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
 | 2. Engine | 5/5 | Complete ✓ | 2026-04-10 |
-| 3. CLI | 3/3 | Complete   | 2026-04-10 |
+| 3. CLI | 3/3 | Complete ✓ | 2026-04-10 |
 | 4. Desktop | 0/TBD | Not started | - |
