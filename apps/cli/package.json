@@ -7,11 +7,15 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "vitest run"
+    "test": "vitest run",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@treis/core": "workspace:*",
-    "commander": "^14"
+    "@treis/tools": "workspace:*",
+    "@treis/api-client": "workspace:*",
+    "commander": "^14",
+    "ulid": "^3.0.2"
   },
   "devDependencies": {
     "typescript": "^5.8",

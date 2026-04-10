@@ -32,12 +32,21 @@ importers:
 
   apps/cli:
     dependencies:
+      '@treis/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
       '@treis/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@treis/tools':
+        specifier: workspace:*
+        version: link:../../packages/tools
       commander:
         specifier: ^14
         version: 14.0.3
+      ulid:
+        specifier: ^3.0.2
+        version: 3.0.2
     devDependencies:
       tsup:
         specifier: ^8
