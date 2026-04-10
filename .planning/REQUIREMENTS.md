@@ -37,14 +37,14 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 
 ### Plan Contract Engine
 
-- [ ] **PLAN-01**: Builder states intent in one sentence, AI generates 2-3 clarifying questions
-- [ ] **PLAN-02**: AI proposes 3 plan options with tradeoffs (Fast/Balanced/Thorough)
-- [ ] **PLAN-03**: Builder picks one option, contract auto-sealed with scope, boundaries, success criteria
-- [ ] **PLAN-04**: Sealed contract persisted to ~/.treis/workspaces/{id}/plan-contracts/{cid}.json
+- [x] **PLAN-01**: Builder states intent in one sentence, AI generates 2-3 clarifying questions
+- [x] **PLAN-02**: AI proposes 3 plan options with tradeoffs (Fast/Balanced/Thorough)
+- [x] **PLAN-03**: Builder picks one option, contract auto-sealed with scope, boundaries, success criteria
+- [x] **PLAN-04**: Sealed contract persisted to ~/.treis/workspaces/{id}/plan-contracts/{cid}.json
 - [x] **PLAN-05**: Typed ScopeEntry for programmatic drift detection: file (glob), tool (name), url (pattern), action (natural language)
 - [x] **PLAN-06**: Scope boundary check runs as pre-hook before every tool execution
 - [x] **PLAN-07**: Violation triggers FATAL interrupt with 3 options: Stop, Amend (re-seal), Continue differently
-- [ ] **PLAN-08**: Token budget tracked per contract (default 200K), WARN on exceed
+- [x] **PLAN-08**: Token budget tracked per contract (default 200K), WARN on exceed
 
 ### Agent Loop
 
@@ -166,14 +166,14 @@ Deferred to future releases. Tracked but not in current roadmap.
 | SESS-03 | Phase 1 | Complete |
 | SESS-04 | Phase 1 | Complete |
 | SESS-05 | Phase 1 | Complete |
-| PLAN-01 | Phase 2 | Pending |
-| PLAN-02 | Phase 2 | Pending |
-| PLAN-03 | Phase 2 | Pending |
-| PLAN-04 | Phase 2 | Pending |
+| PLAN-01 | Phase 2 | Complete |
+| PLAN-02 | Phase 2 | Complete |
+| PLAN-03 | Phase 2 | Complete |
+| PLAN-04 | Phase 2 | Complete |
 | PLAN-05 | Phase 2 | Complete |
 | PLAN-06 | Phase 2 | Complete |
 | PLAN-07 | Phase 2 | Complete |
-| PLAN-08 | Phase 2 | Pending |
+| PLAN-08 | Phase 2 | Complete |
 | AGENT-01 | Phase 2 | Pending |
 | AGENT-02 | Phase 2 | Pending |
 | AGENT-03 | Phase 2 | Pending |

@@ -83,12 +83,12 @@ Plans:
   3. A failing step retries up to 3 times with error context injected; on 3rd failure the system offers local->cloud escalation
   4. The same tool called with identical input 3 consecutive times triggers a FATAL circuit-breaker interrupt
   5. A tool call that would violate the sealed scope boundary triggers a FATAL interrupt with Stop/Amend/Continue options
-**Plans:** 1/5 plans executed
+**Plans:** 3/5 plans executed
 
 Plans:
 - [x] 02-01-PLAN.md — Plan Contract schema (Zod v4) + scope checker (micromatch) + dependency install
-- [ ] 02-02-PLAN.md — Plan Contract engine (generateObject dialogue: clarify + propose + seal)
-- [ ] 02-03-PLAN.md — Agent loop types, state machine, circuit breaker, retry handler
+- [x] 02-02-PLAN.md — Plan Contract engine (generateObject dialogue: clarify + propose + seal)
+- [x] 02-03-PLAN.md — Agent loop types, state machine, circuit breaker, retry handler
 - [ ] 02-04-PLAN.md — Agent executor (streaming loop, tool dispatch, scope pre-hook, retry + escalation)
 - [ ] 02-05-PLAN.md — Integration: barrel exports, build verification, full test suite gate
 
@@ -125,6 +125,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
-| 2. Engine | 1/5 | In Progress|  |
+| 2. Engine | 3/5 | In Progress|  |
 | 3. CLI | 0/TBD | Not started | - |
 | 4. Desktop | 0/TBD | Not started | - |
