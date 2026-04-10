@@ -64,7 +64,14 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Each tool (FileRead, FileWrite, Bash, Glob, Grep, WebSearch) executes its happy path and rejects out-of-workspace paths or blocked commands
   4. A DangerousShell command requires explicit approval before executing; a NetworkAccess call respects the NetworkAccess gate
   5. Session state writes to ~/.treis/sessions/{sid}.jsonl and a JSONL trace entry appears after every tool call
-**Plans**: TBD
+**Plans:** 5 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Monorepo scaffold with pnpm workspace, TypeScript, ESLint, Vitest, and typed error hierarchy
+- [ ] 01-02-PLAN.md — Model adapters (Ollama + Anthropic) with unified streamText, health checks, and slot manager
+- [ ] 01-03-PLAN.md — Tool system foundation: types, permissions, executor, and read-only tools (FileRead, Glob, Grep)
+- [ ] 01-04-PLAN.md — Write/dangerous tools: FileWrite, BashTool (metacharacter blocking), WebSearch
+- [ ] 01-05-PLAN.md — Session persistence: state store, workspace bootstrap, JSONL traces, checkpoints
 
 ### Phase 2: Engine
 **Goal**: The Plan Contract engine and Agent loop run correctly — a Builder can go from intent to sealed contract, the loop executes steps with retries and circuit breaking, and scope violations interrupt execution
@@ -110,7 +117,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/5 | Planning complete | - |
 | 2. Engine | 0/TBD | Not started | - |
 | 3. CLI | 0/TBD | Not started | - |
 | 4. Desktop | 0/TBD | Not started | - |
