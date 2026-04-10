@@ -118,8 +118,14 @@ Plans:
   3. The sealed contract screen shows scope, boundaries, and success criteria before the Builder clicks "Begin Execution"
   4. A DMG built via electron-builder installs and launches on macOS (Apple Silicon and Intel)
   5. A demo GIF capturing the complete Plan Contract flow from intent to result exists and is committed to the repo
-**Plans**: TBD
+**Plans:** 4 plans
 **UI hint**: yes
+
+Plans:
+- [ ] 04-01-PLAN.md — Electron + electron-vite scaffold, IPC bridge (7 channels), worker thread agent runner
+- [ ] 04-02-PLAN.md — IntentInput, Dialogue, and PlanOptions screens (contract negotiation UI)
+- [ ] 04-03-PLAN.md — SealedContract, ExecutionStream, Result screens and ViolationModal (execution UI)
+- [ ] 04-04-PLAN.md — DMG packaging via electron-builder and demo GIF capture
 
 ## Progress
 
@@ -131,4 +137,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
 | 2. Engine | 5/5 | Complete ✓ | 2026-04-10 |
 | 3. CLI | 3/3 | Complete ✓ | 2026-04-10 |
-| 4. Desktop | 0/TBD | Not started | - |
+| 4. Desktop | 0/4 | Planning complete | - |
