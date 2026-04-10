@@ -41,9 +41,9 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 - [ ] **PLAN-02**: AI proposes 3 plan options with tradeoffs (Fast/Balanced/Thorough)
 - [ ] **PLAN-03**: Builder picks one option, contract auto-sealed with scope, boundaries, success criteria
 - [ ] **PLAN-04**: Sealed contract persisted to ~/.treis/workspaces/{id}/plan-contracts/{cid}.json
-- [ ] **PLAN-05**: Typed ScopeEntry for programmatic drift detection: file (glob), tool (name), url (pattern), action (natural language)
-- [ ] **PLAN-06**: Scope boundary check runs as pre-hook before every tool execution
-- [ ] **PLAN-07**: Violation triggers FATAL interrupt with 3 options: Stop, Amend (re-seal), Continue differently
+- [x] **PLAN-05**: Typed ScopeEntry for programmatic drift detection: file (glob), tool (name), url (pattern), action (natural language)
+- [x] **PLAN-06**: Scope boundary check runs as pre-hook before every tool execution
+- [x] **PLAN-07**: Violation triggers FATAL interrupt with 3 options: Stop, Amend (re-seal), Continue differently
 - [ ] **PLAN-08**: Token budget tracked per contract (default 200K), WARN on exceed
 
 ### Agent Loop
@@ -170,9 +170,9 @@ Deferred to future releases. Tracked but not in current roadmap.
 | PLAN-02 | Phase 2 | Pending |
 | PLAN-03 | Phase 2 | Pending |
 | PLAN-04 | Phase 2 | Pending |
-| PLAN-05 | Phase 2 | Pending |
-| PLAN-06 | Phase 2 | Pending |
-| PLAN-07 | Phase 2 | Pending |
+| PLAN-05 | Phase 2 | Complete |
+| PLAN-06 | Phase 2 | Complete |
+| PLAN-07 | Phase 2 | Complete |
 | PLAN-08 | Phase 2 | Pending |
 | AGENT-01 | Phase 2 | Pending |
 | AGENT-02 | Phase 2 | Pending |

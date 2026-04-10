@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: verifying
-stopped_at: Phase 2 context gathered (auto mode)
-last_updated: "2026-04-10T06:35:50.733Z"
-last_activity: 2026-04-10 -- Phase 01 verified complete
+stopped_at: Completed 02-engine-02-01-PLAN.md
+last_updated: "2026-04-10T07:01:55.123Z"
+last_activity: 2026-04-10
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 5
-  completed_plans: 5
-  percent: 100
+  total_plans: 10
+  completed_plans: 6
+  percent: 60
 ---
 
 # Project State
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-04-09)
 
 Phase: 01 (Foundation) — COMPLETE ✓
 Plan: 5 of 5
-Status: Phase verified, 113 tests pass, all 24 requirements satisfied
-Last activity: 2026-04-10 -- Phase 01 verified complete
+Status: Phase complete — ready for verification
+Last activity: 2026-04-10
 
 Progress: [██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 25%
 
@@ -51,6 +51,8 @@ Progress: [██████████░░░░░░░░░░░░░
 - Last 5 plans: 01-01, 01-02, 01-03, 01-04, 01-05
 - Trend: Steady execution, all plans completed in single pass
 
+| Phase 02-engine P01 | 4 | 3 tasks | 6 files |
+
 ## Accumulated Context
 
 ### Decisions
@@ -63,6 +65,9 @@ Recent decisions affecting current work:
 - Roadmap: Build order — tools + api-client in parallel -> session -> plan contract -> agent loop -> CLI -> Electron
 - **Harness Methodology**: ALL phases use the development pipeline — Plan (gstack/GSD) -> Execute (Superpowers TDD) -> QA (gstack) -> Loop until 100%
 - [Phase 01]: D-16/D-17/D-18/D-19/D-20: Session layer uses shallow-comparison store, append-only JSONL persistence, workspace at ~/.treis/workspaces/{id}/, pino sync trace logger, atomic checkpoint writes
+- [Phase 02-engine]: Zod v4 discriminatedUnion for ScopeEntry provides efficient single-pass parsing vs z.union
+- [Phase 02-engine]: URL scope uses substring containment (advisory, not hard security boundary in Phase 0)
+- [Phase 02-engine]: Action scope entries skipped without checkAction callback (optional enforcement)
 
 ### Pending Todos
 
@@ -74,6 +79,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-10T06:35:50.728Z
-Stopped at: Phase 2 context gathered (auto mode)
-Resume file: .planning/phases/02-engine/02-CONTEXT.md
+Last session: 2026-04-10T07:01:55.117Z
+Stopped at: Completed 02-engine-02-01-PLAN.md
+Resume file: None
