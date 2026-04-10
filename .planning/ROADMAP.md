@@ -49,7 +49,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Monorepo, model adapters, tool system, and session persistence — everything the engine depends on
 - [x] **Phase 2: Engine** - Plan Contract engine and Agent loop — the core intelligence that makes plans complete (completed 2026-04-10)
-- [ ] **Phase 3: CLI** - Terminal interface and benchmark suite — proves the engine works end-to-end
+- [x] **Phase 3: CLI** - Terminal interface and benchmark suite — proves the engine works end-to-end (completed 2026-04-10)
 - [ ] **Phase 4: Desktop** - Electron app wraps the proven engine with a visual Plan Contract flow
 
 ## Phase Details
@@ -101,11 +101,11 @@ Plans:
   2. A contract violation in the CLI displays the 3 options (Stop / Amend / Continue) and responds correctly to Builder input
   3. The result screen shows a success criteria checklist with pass/fail per criterion
   4. The benchmark runner executes all 10 reference plans and reports a measured success rate; the rate meets or exceeds 80%
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 
 Plans:
 - [x] 03-01-PLAN.md — CLI scaffold, readline singleton, dialogue and options UI, run command (contract negotiation)
-- [ ] 03-02-PLAN.md — Execution stream consumer, violation/escalation handlers, result screen, full flow wiring
+- [x] 03-02-PLAN.md — Execution stream consumer, violation/escalation handlers, result screen, full flow wiring
 - [x] 03-03-PLAN.md — Benchmark suite: 10 reference plan fixtures, runner, Vitest test with 80% threshold
 
 ### Phase 4: Desktop
@@ -130,5 +130,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/5 | Complete ✓ | 2026-04-10 |
 | 2. Engine | 5/5 | Complete ✓ | 2026-04-10 |
-| 3. CLI | 2/3 | In Progress|  |
+| 3. CLI | 3/3 | Complete   | 2026-04-10 |
 | 4. Desktop | 0/TBD | Not started | - |

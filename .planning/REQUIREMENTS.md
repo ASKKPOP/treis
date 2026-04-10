@@ -70,9 +70,9 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 - [x] **CLI-01**: `treis "task"` starts Plan Contract flow in terminal
 - [x] **CLI-02**: Interactive dialogue: AI questions rendered, Builder answers via stdin
 - [x] **CLI-03**: 3 plan options displayed with tradeoffs, Builder picks by number/letter
-- [ ] **CLI-04**: Live execution stream shows step counter, current step, tool results
-- [ ] **CLI-05**: Contract violation displayed with 3 options in terminal
-- [ ] **CLI-06**: Result summary shows success criteria checklist (pass/fail per criterion)
+- [x] **CLI-04**: Live execution stream shows step counter, current step, tool results
+- [x] **CLI-05**: Contract violation displayed with 3 options in terminal
+- [x] **CLI-06**: Result summary shows success criteria checklist (pass/fail per criterion)
 
 ### Desktop App (Electron)
 
@@ -185,9 +185,9 @@ Deferred to future releases. Tracked but not in current roadmap.
 | CLI-01 | Phase 3 | Complete |
 | CLI-02 | Phase 3 | Complete |
 | CLI-03 | Phase 3 | Complete |
-| CLI-04 | Phase 3 | Pending |
-| CLI-05 | Phase 3 | Pending |
-| CLI-06 | Phase 3 | Pending |
+| CLI-04 | Phase 3 | Complete |
+| CLI-05 | Phase 3 | Complete |
+| CLI-06 | Phase 3 | Complete |
 | BENCH-01 | Phase 3 | Complete |
 | BENCH-02 | Phase 3 | Complete |
 | BENCH-03 | Phase 3 | Complete |
