@@ -573,19 +573,19 @@ export function assertWithinWorkspace(
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **WebSearchTool backend in Phase 1**
+1. **WebSearchTool backend in Phase 1** — RESOLVED (Plan 01-04, Task 2: DuckDuckGo HTML scrape)
    - What we know: TOOL-08 requires a web search tool with NetworkAccess gate. No specific search API is locked.
    - What's unclear: Whether to use Brave Search API (paid), DuckDuckGo (free, scraping), or a mock in Phase 1 and real API in Phase 3.
    - Recommendation: Implement the tool interface + permission gate with a configurable backend. Use a mock or DuckDuckGo HTML scrape in Phase 1; replace with Brave API in Phase 3 when CLI ships.
 
-2. **GrepTool implementation: ripgrep binary vs pure JS**
+2. **GrepTool implementation: ripgrep binary vs pure JS** — RESOLVED (Plan 01-03, Task 2: pure Node.js scan)
    - What we know: GrepTool searches file content by regex within workspace (TOOL-07).
    - What's unclear: Whether to shell out to `rg` (fast, but adds binary dep) or use Node.js `fs.readdir` + regex scan (slower, zero dep).
    - Recommendation: Check if `rg` is available at runtime; shell out to it if present; fall back to pure Node.js scan. Do not require it as a hard dependency.
 
-3. **Slot Manager in Phase 1: manual config vs auto-detect**
+3. **Slot Manager in Phase 1: manual config vs auto-detect** — RESOLVED (Plan 01-02, Task 2: manual config only)
    - What we know: MODEL-06 says "assigns strongest model to Slot A, fastest to Slot B based on manual config."
    - What's unclear: Whether Phase 1 needs a real benchmarking harness or just a config file that names the models.
    - Recommendation: Manual config only in Phase 1 (`slot-config.json` with model names). Auto-benchmark is Phase 2+.
