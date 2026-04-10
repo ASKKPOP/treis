@@ -6,6 +6,7 @@
   "mac": {
     "category": "public.app-category.developer-tools",
     "hardenedRuntime": false,
+    "identity": null,
     "target": [{ "target": "dmg", "arch": ["universal"] }],
     "icon": "build/icon.icns"
   },

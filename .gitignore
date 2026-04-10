@@ -9,3 +9,5 @@ coverage/
 .DS_Store
 leaked-src/
 docs/*
+apps/desktop/out/
+apps/desktop/release/
