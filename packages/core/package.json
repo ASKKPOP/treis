@@ -19,6 +19,7 @@
   "dependencies": {
     "@treis/api-client": "workspace:*",
     "@treis/tools": "workspace:*",
+    "ai": "5.0.172",
     "micromatch": "^4.0.8",
     "pino": "^9",
     "ulid": "^3.0.2",
