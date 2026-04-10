@@ -89,10 +89,10 @@ Requirements for Phase 0 release. Each maps to roadmap phases.
 
 ### Benchmark & Quality
 
-- [ ] **BENCH-01**: 10 reference plans covering diverse domains (code, writing, research, data, mixed)
-- [ ] **BENCH-02**: Each plan has expected outcomes (files created, content checks, success criteria)
-- [ ] **BENCH-03**: Benchmark runner executes all 10 plans and reports success rate
-- [ ] **BENCH-04**: Success rate target: 80%+ on reference plans (stretch: 90%+)
+- [x] **BENCH-01**: 10 reference plans covering diverse domains (code, writing, research, data, mixed)
+- [x] **BENCH-02**: Each plan has expected outcomes (files created, content checks, success criteria)
+- [x] **BENCH-03**: Benchmark runner executes all 10 plans and reports success rate
+- [x] **BENCH-04**: Success rate target: 80%+ on reference plans (stretch: 90%+)
 - [ ] **BENCH-05**: Demo GIF capturing Plan Contract flow from intent to completion
 
 ## v2 Requirements
@@ -188,10 +188,10 @@ Deferred to future releases. Tracked but not in current roadmap.
 | CLI-04 | Phase 3 | Pending |
 | CLI-05 | Phase 3 | Pending |
 | CLI-06 | Phase 3 | Pending |
-| BENCH-01 | Phase 3 | Pending |
-| BENCH-02 | Phase 3 | Pending |
-| BENCH-03 | Phase 3 | Pending |
-| BENCH-04 | Phase 3 | Pending |
+| BENCH-01 | Phase 3 | Complete |
+| BENCH-02 | Phase 3 | Complete |
+| BENCH-03 | Phase 3 | Complete |
+| BENCH-04 | Phase 3 | Complete |
 | DESK-01 | Phase 4 | Pending |
 | DESK-02 | Phase 4 | Pending |
 | DESK-03 | Phase 4 | Pending |
