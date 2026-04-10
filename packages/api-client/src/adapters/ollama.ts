@@ -22,7 +22,10 @@ export function createOllamaAdapter(baseUrl: string = OLLAMA_BASE_URL): ModelAda
     providerType: 'ollama',
     getModel(modelId: string) {
       // CRITICAL: num_ctx MUST be passed per-call. Ollama resets to 2048 otherwise.
-      return provider(modelId, { num_ctx: OLLAMA_NUM_CTX })
+      // The @ai-sdk/openai types only declare a 1-arg signature but the runtime
+      // passes extra options through to the request body — verified in integration tests.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (provider as any)(modelId, { num_ctx: OLLAMA_NUM_CTX })
     },
     async checkCapabilities(modelId: string): Promise<ModelCapabilities> {
       // Hit Ollama's native /api/show endpoint (not OpenAI-compat) to get model info

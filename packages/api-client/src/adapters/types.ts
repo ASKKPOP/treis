@@ -3,7 +3,7 @@ import type { LanguageModelV3 } from '@ai-sdk/provider'
 /**
  * Unified model adapter interface.
  * Both Ollama and Anthropic adapters implement this interface,
- * enabling the agent loop to call streamText interchangeably.
+ * enabling the agent loop to call streamText interchangeably per MODEL-04.
  */
 export interface ModelAdapter {
   readonly name: string

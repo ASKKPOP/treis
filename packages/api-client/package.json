@@ -21,9 +21,11 @@
     "ai": "^5",
     "@ai-sdk/anthropic": "latest",
     "@ai-sdk/openai": "latest",
+    "@ai-sdk/provider": "^3",
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/node": "^22",
     "typescript": "^5.8",
     "tsup": "^8",
     "vitest": "^3"
