@@ -104,7 +104,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — CLI scaffold, readline singleton, dialogue and options UI, run command (contract negotiation)
+- [x] 03-01-PLAN.md — CLI scaffold, readline singleton, dialogue and options UI, run command (contract negotiation)
 - [ ] 03-02-PLAN.md — Execution stream consumer, violation/escalation handlers, result screen, full flow wiring
 - [ ] 03-03-PLAN.md — Benchmark suite: 10 reference plan fixtures, runner, Vitest test with 80% threshold
 

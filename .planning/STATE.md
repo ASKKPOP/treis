@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 Engine — COMPLETE
-last_updated: "2026-04-10T08:14:41.093Z"
-last_activity: 2026-04-10 -- Phase 3 planning complete
+stopped_at: Completed 03-cli-01-PLAN.md
+last_updated: "2026-04-10T08:20:25.410Z"
+last_activity: 2026-04-10
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 13
-  completed_plans: 10
-  percent: 77
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-09)
 
 **Core value:** Plan Contracts — AI proposes, Builder picks, scope sealed before execution. Multi-step AI plans complete end-to-end.
-**Current focus:** Phase 03 — CLI (next)
+**Current focus:** Phase 3 — CLI
 
 ## Current Position
 
-Phase: 02 (Engine) — COMPLETE ✓
-Plan: 5 of 5
+Phase: 3 (CLI) — EXECUTING
+Plan: 2 of 3
 Status: Ready to execute
-Last activity: 2026-04-10 -- Phase 3 planning complete
+Last activity: 2026-04-10
 
 Progress: [████████████████████░░░░░░░░░░░░░░░░░░░░] 50%
 
@@ -57,6 +57,7 @@ Progress: [████████████████████░░░
 | Phase 02-engine P03 | 3 | 2 tasks | 8 files |
 | Phase 02-engine P04 | 11 | 1 tasks | 2 files |
 | Phase 02-engine P05 | 6 | 2 tasks | 5 files |
+| Phase 03-cli P01 | 2m 6s | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -83,6 +84,9 @@ Recent decisions affecting current work:
 - [Phase 02-engine]: Export ViolationDecision only from plan-contract barrel; agent barrel omits it to avoid re-export ambiguity
 - [Phase 02-engine]: Cast messages and toolDefinitions via 'as unknown as' to ModelMessage[]/ToolSet in executor.ts to fix DTS overload-resolution errors without changing runtime behavior
 - [Phase 02-engine]: Extracted @treis/errors package to hold TreisError, breaking circular DTS dependency between @treis/tools and @treis/core
+- [Phase 03-cli]: tsup banner adds shebang to dist output — source file has no shebang to avoid duplicate in ESM
+- [Phase 03-cli]: TREIS_MODEL_PROVIDER + TREIS_MODEL_ID env vars for CLI model config in Phase 3; config file deferred to Phase 4+
+- [Phase 03-cli]: readline singleton closed in finally block to prevent process hanging on stdin after CLI completion
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ None. Phase 2 is complete and verified.
 
 ## Session Continuity
 
-Last session: 2026-04-10T00:39:45.000Z
-Stopped at: Phase 2 Engine — COMPLETE
+Last session: 2026-04-10T08:20:25.404Z
+Stopped at: Completed 03-cli-01-PLAN.md
 Resume file: None
